@@ -56,8 +56,6 @@ const Reels = () => {
     setCou([...cou,...jffjfjf])
     
    },1000)
-    // setOO(false)
-    // console.log(cou)
     index =index+count
 
   }
@@ -77,13 +75,8 @@ const Reels = () => {
         // Access and manipulate myDivRef.current here
         const loader = document.getElementById("loader")
         io.observe(loader);
-        // addPoidjd()
-        // console.log('myDivRef exists:', myDivRef.current); 
+
       }
-    // fetchPosts()
-    // addItems();
-    // })
-   
  },[])
   
     
@@ -110,7 +103,7 @@ const Reels = () => {
                         ))
                     }
                     <div id="loader" ref={myDivRef}>
-                        Loader ...
+                        Loading
                 </div>
                 </div>
                 
