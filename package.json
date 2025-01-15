@@ -1,8 +1,8 @@
 {
-  "name": "tweetflash-web",
+  "name": "tweetflash",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://tweatflash.github.io/tweatflash-web",
+  "homepage":"https://tweatflash.github.io/tweatflash.github.io",
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
     "@testing-library/jest-dom": "^5.17.0",
