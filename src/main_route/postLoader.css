@@ -1,0 +1,155 @@
+
+.post-loader{
+    width: 100%;
+    height: auto;
+    display:flex;
+    justify-content: center;
+}
+.loader-pots-wrapper{
+    max-width: 430px;
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+.loader-posts-holder{
+    width: 100%;
+    height: auto;
+    padding: 15px;
+}
+.loading-posts{
+    width: 100%;
+    background-color: var(--post-color2);
+    margin: 20px 0px;
+    border-radius: 15px;
+    border: .5px solid var(--border-color2);
+    padding: 13px;
+
+}
+.loader-post-header{
+    width: 100%;
+}
+.hd-wrp{
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+.pp-htto{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: .5px solid var(--border-color2);
+    background-color: var(--main-color2);
+}
+.pp-tt{
+    width: calc(100% - 50px);
+    padding-left: 10px;
+
+}
+.pp-1{
+    max-width: 250px;
+    width: 100%;
+    height: 10px;
+    border-radius: 3px;
+    border: .2px solid var(--border-color2);
+    background-color: var(--main-color2);
+    margin-top: 10px;
+}
+.pp-2{
+    max-width: 130px;
+    width: 100%;
+    height: 10px;
+    border-radius: 3px;
+    border: .2px solid var(--border-color2);
+    background-color: var(--main-color2);
+    margin-top: 7px;
+}
+.loader-ppb .pp-1{
+    margin-top: 0px;
+    max-width: 90%;
+}
+.loader-ppb .pp-2{
+    max-width: 80%;
+}
+.loader-post-img{
+    width: 100%;
+    border-radius: 15px;
+    height: 200px;
+    border: .2px solid var(--border-color2);
+    background-color: var(--main-color2);
+    margin-top: 10px;
+}
+.loading-psts-reaction{
+    width:100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: calc();
+    padding-top: 10px;
+}
+.loading-psts-reaction div{
+    width: 20%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: var(--main-color2);
+    border: .2px solid var(--border-color2);
+}
+
+
+
+
+
+
+
+
+
+      .head {
+        /* background-image: linear-gradient(to right, #333 0%, #222 20%, #333 100%); */
+      /* background-color: #EEE; */
+      animation: 4s shimmer  infinite  linear;
+      transition: .3s;
+    
+      }
+  @-webkit-keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+      }
+    100% {
+      background-position: 600px 0;
+    }
+  }
+  @-moz-keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+      }
+    100% {
+      background-position: 600px 0;
+    }
+  }
+  @-o-keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+      }
+    100% {
+      background-position: 600px 0;
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 0px 0;
+      
+      }
+    
+    25%{
+      
+    }
+    50%{
+      
+    }
+    75%{
+      
+    }
+    100% {
+      background-position: 600px 0;
+      
+    }
+  }

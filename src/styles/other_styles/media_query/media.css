@@ -1,0 +1,130 @@
+@media screen and (max-width:1100px){
+    .nav_link .text{
+        display: none;
+    }
+    .route_nav_wrapper{
+        width: auto;
+    }
+    .nav_link{
+        padding: 0px;
+    }
+    .main_data_extractor .css0000_main{
+        width:calc( 100% - 65px);
+        left: 65px;
+    }
+    .sd-a2{
+        display: none;
+    }
+    .sd-logo-container{
+        padding-left: 0px;
+        display:flex;
+        justify-content: center;
+    }
+    .sd-logo{
+        /* width:100%; */
+        height: 100%;
+
+        
+        padding: 0px;
+        border: none;
+    }
+    .sd-a1{
+        width:35px;
+    }
+}
+@media screen and (max-width:800px){
+    .nav_link .text{
+        display: flex;
+    }
+    .route_nav_wrapper{
+        width: 250px;
+    }
+    .main_data_extractor .css0000_main{
+        width:calc( 100% - 250px);
+        left: 250px;
+    }
+    .css0001_mre{
+        display: none;
+    }
+    .nav_link{
+        padding: 0px 10px; 
+    }
+    .header_navigation{
+        padding: 0px 10px;
+    }
+    .sd-a2{
+        display: flex;
+    }
+    .sd-logo-container{
+        padding-left: 10px;
+    padding-top: 10px;
+    justify-content: start;
+        
+    }
+    .sd-logo{
+        /* width:100%; */    
+        height: 100%;
+
+        border: 1px solid var(--border-color2);
+        padding:5px  7.5px ;
+    }
+    .sd-a1{
+        width:23px;
+    }
+}
+@media screen and (max-width:620px){
+    .nav_link .text{
+        display: none;
+    }
+    .route_nav_wrapper{
+        width: auto;
+    }
+    .nav_link{
+        padding: 0px 0px; 
+    }
+    .main_data_extractor .css0000_main{
+        width:calc( 100% - 65px);
+        left: 65px;
+    }
+    .header_navigation{
+        padding: 0px 10px;
+    }
+    .sd-a2{
+        display: none;
+    }
+    .sd-logo-container{
+        padding-left: 0px;
+        display:flex;
+        justify-content: center;
+    }
+    .sd-logo{
+        /* width:100%; */
+        height: 100%;
+
+        
+        padding: 0px;
+        border: none;
+    }
+    .sd-a1{
+        width:35px;
+    }
+}
+@media screen and (max-width:450px){
+    
+    .main_data_extractor .css0000_main{
+        width:calc( 100%);
+        left: 0px;
+    }
+    .header_navigation{
+        border-bottom:0px solid var(--border-color2);
+    }
+    .vdv{
+        border-left: none;
+    }
+    .profile_image{
+        width: 90px;
+        height: 90px;
+        left: 10px;
+    }
+    
+}

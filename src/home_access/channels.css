@@ -1,0 +1,65 @@
+.container-channels{
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+   
+
+}
+.channels-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.channels-holder{
+    max-width: 500px;
+    width: 100%;
+}
+.channels-list{
+    width: 100%;
+    padding: 15px;
+}
+.channels{
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    /* background-color: var(--post-color2); */
+}
+.channels-cont{
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+.chan-prf{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4070f4;
+}
+.chan-data{
+    width: calc(100% - 50px );
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.chan-data .userName{
+    text-align: left;
+    padding: 0px;
+    border: 0px solid red;
+
+}
+.chan-data .userName span{
+    border: 0px solid red;
+    padding: 0px;   
+}
+.chan-data .profile-details{
+    width: calc(100% - 70px);
+}
+.channels-follow button{
+    background-color: #4070f4;
+    border-radius:20px;
+    height: 25px;
+    width: 70px;
+    border: none;
+    outline: none;
+    color: #fff;
+}

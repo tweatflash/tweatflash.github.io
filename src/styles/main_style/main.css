@@ -1,0 +1,16 @@
+:root{
+    --main-color:#0D0D0D;
+    /* --main-color2:#FFFFFF; */
+    /* --border-color2:transparent; */
+    --border-color:rgba(225,225,225,.1);
+    /* 0.02 */
+    --c161a22:#161a22;
+    --c161a22b:rgba(0,0,0,.1);
+    --text:#e6edf3;
+    /* --text2:#000; */
+    --span:#111;
+    --shade-opaque-color:#111;
+    --blue:#2f80ed;
+    --icon-color:#2f80ed;
+    /* --post-color2:#f9f9F9; */
+}

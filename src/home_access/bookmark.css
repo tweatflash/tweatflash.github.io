@@ -1,0 +1,25 @@
+.no_bookmarks{
+    width: 100%;
+    height: calc(100% - 51px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.b-svg{
+    max-width: 250px;
+    width: 100%;
+    height: fit-content;
+}
+.b-svg p{
+    text-align: center;
+    font-size: 16px;
+    color: var(--span2);
+}
+.b-svg svg{
+    width: 100%;
+    stroke: var(--post-color2);
+}
+.container_bookmarks{
+    height: 100%;
+}

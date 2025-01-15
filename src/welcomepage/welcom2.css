@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Concert+One&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Pangolin&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Space+Grotesk:wght@300..700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Parkinsans:wght@300..800&family=Space+Grotesk:wght@300..700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Teachers:ital,wght@0,400..800;1,400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Questrial&family=Space+Grotesk:wght@300..700&family=Teachers:ital,wght@0,400..800;1,400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&family=Pontano+Sans:wght@300..700&family=Questrial&family=Space+Grotesk:wght@300..700&family=Teachers:ital,wght@0,400..800;1,400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Tilt+Neon&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Actor&family=Cabin:ital,wght@0,400..700;1,400..700&family=Hubot+Sans:ital,wght@0,200..900;1,200..900&family=Tilt+Neon&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Flow+Circular&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Parkinsans:wght@300..800&family=Puritan:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sniglet&family=Sora:wght@100..800&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+img{
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    /* overflow-clip-margin: ; */
+} 
+:root{
+  --main-color2:rgb(35 39 47 / 1);
+  /* --main-color2:#FFFFFF; */
+  /* --border-color2:transparent; */
+  --border-color2:rgba(225,225,225,.5);
+  /* 0.02 */
+  --c161a22:#161a22;
+  --c161a22b:rgba(0,0,0,.1);
+  --text2:#e7e9ea;
+  /* --text2:#000; */
+  --span:#111;
+  --post-color2:#111;
+  --blue:#2f80ed;
+  --icon-color:#2f80ed;
+  --default_font_size:14px;
+  /* --post-color2:#f9f9F9; */
+}
+body.light{
+  --main-color2:#ffffff;
+  --border-color2:rgba(0,0,0,.08); 
+  --post-color2:#fff;
+  --text2:#000;
+  --icon-color:#000;
+}
+@font-face {
+  font-family: font;
+  src: url(../assets/fonts/Cooljazz.ttf);
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+   
+    font-family: "Flow Circular", system-ui;
+    /* font-family: "Actor", sans-serif; */
+    
+    font-family: "Poppins", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+
+      "wdth" 100;
+      font-family: "Roboto", sans-serif;
+      font-family: "Exo 2", sans-serif;
+      font-family: "Chakra Petch", sans-serif;
+      /* font-family: font; */
+      /* font-family: "Bricolage Grotesque", sans-serif; */
+      
+      font-family: font;
+} 
+
+p, p span{
+  font-weight: 400;
+  font-size: small;
+  line-height: 1.3;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-size: 2.5em 2.5em;
+    /* background-image: linear-gradient(rgba(225,225,225,.075) .1em, transparent .1em), linear-gradient(90deg, rgba(225, 255, 225, .075) .1em, transparent .1em); */
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: auto;
+}
+.a{
+    max-width: 1200px;
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    /* background-color: rgba(225,225,225,.1); */
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    border: 1px solid var(--border-color2);
+    width: auto;
+    border-radius: 50px;
+    /* box-shadow: 0px 0px 10px #111; */
+    background-color: var(--post-color2);
+    padding:5px  7.5px ;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.logo h2{
+  font-weight:bold;
+  color: var(--text2);
+}
+.a1{
+    height: 100%;
+    width: 28px;
+    background-color: #4070f4;
+    border-radius: 50%;
+    background-image: url(../assets/images/svg/logo.svg);
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.a2{
+    padding:0px 7.5px 0px 7px;
+    font-size: 10px;
+}
+.switch-continue{
+    width: 100%;
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+
+}
+.switch-continue button{
+    padding: 0px 15px;
+    border-radius: 30px;
+    border: none;    
+    background-color: transparent;
+    outline: none;
+    color: var(--text2);
+    font-weight: bold;
+}
+.switch-continue button.active{
+    background-image: linear-gradient(to right,#4070f4 ,purple);
+    color: #fff;
+}
+.main-entry{
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    display: grid;
+    height: calc( 100vh - 200px);
+    place-content: center;
+    position: relative;
+    
+}
+.main-entry h1, .main-entry p{
+    text-align: center;
+    color: var(--text2);
+}
+h1{
+    font-size: 5em;
+    font-weight: 400;
+    padding: 0px 15px;
+    line-height: 100%;
+    /* font-family: font; */
+    font-family: "Bricolage Grotesque", sans-serif; 
+}
+.main-entry .p{
+    padding: 10px 20px 0px;
+}
+.grad{
+   
+    -webkit-text-fill-color: transparent; 
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right,#4070f4 ,purple); 
+    font-weight: 600;
+    font-family: font;
+    font-family: "Bricolage Grotesque", sans-serif; 
+}
+.get-started-modal{
+    max-width: 350px;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-image: linear-gradient(to right,#4070f4 ,purple);
+    /* border: 2px solid rgba(0, 0, 0, .51); */
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+}
+.bottom_salv{
+    background-color: #222;
+    width: 100%;
+    height: 20px;
+    border-radius: 50% 50% 0px 0px;
+    border-top: 1px solid rgba(225, 255, 225, .075);
+}
+.login{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    /* display: none; */
+    background-color: rgba(0, 0, 0, .7);
+    backdrop-filter: blur(5px);
+    top: 0px;
+    visibility: hidden;
+    opacity: 0;
+    transition: .25s;
+}
+.login.preview{
+    visibility: visible;
+    opacity:  1;
+}
+.login .holder{
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 30px 20px 0px 20px; 
+    position: relative;
+}
+
+.fixed-back{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+}
+.mouse_scroller{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+  margin: auto;
+  position: absolute;
+  display: grid;
+  place-self: center;
+  display: flex;
+  bottom: 20px;
+  transition: .2s ;
+}
+.mouse_scroller:active , .fixed-back:active{
+  border: 1.5px solid rgba(225, 255, 225, .3);
+}
+.login .wrapper{
+    max-width: 400px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.fixed-back svg{
+    width: 65%;
+}
+.welcome-text{
+    font-size: 1.4em;
+    color: #727277;
+    font-weight: bold;
+    
+    /* font-family: "Prompt", sans-serif; */
+  }
+  .tx-center{
+    text-align: center;
+  }
+  .company-name{
+    font-size: 4em;
+    font-weight: bolder;
+    color: #fff;
+    letter-spacing: 0px;
+    /* line-height: 100%; */
+    /* font-family: "Prompt", sans-serif; */
+  }
+  .more-content-layout{
+      width: 100%;
+      height: auto;
+      border-radius: 25px;
+      margin: 10px 0px;
+      z-index: 20;
+      background-color:#151516;
+      box-shadow: 2px 2px 20px rgba(0,0,0,0.01);
+      margin-top: 0px;
+      padding: 20px 20px;
+      
+      position: relative;
+      /* border: 1px solid rgba(225, 255, 225, .05); */
+  }
+  .form-data{
+    width: 100%;
+    height: 100%;
+  }
+  .intro-text{
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #fff;
+    
+  }
+  .pad-1{
+    padding-bottom: 10px;
+  }
+  .btn-btn1{
+    width: 100%;
+    height: 42.5px;
+    margin: 7.5px 0px;
+    border-radius: 10px;
+    outline: none;
+    color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: .9em;
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .btn-btn2{
+    border: .5px solid rgba(225,225,225,.1);
+    background-color: rgba(225,225,225,.07);
+  }
+  .btn-blue{
+    background-color: #4070f4;
+  }
+  
+  .btn-btn2 img{
+    height:20px;
+  }
+  .light-text{
+    color: #727277  ;
+    /* font-weight: 700; */
+    
+  }
+  .btn-gray{
+    background-color: #2C2B38;
+    
+  }
+  .text-sm{
+    font-size: smaller;
+  }
+  .txt-white{
+    color: #fff;
+    font-size: .8em ;
+  }
+  .text-md{
+    font-size: .9em;
+  }
+  input[type="text"], input[type="email"],input[type="password"]{
+    width: 100%;
+    height: 42.5px;
+  
+    border: .5px solid rgba(225,225,225,.1);
+    background-color: #0D0D0D;
+    
+    border-radius: 10px;
+    outline: none;
+    color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-weight: bold;
+   cursor: pointer;
+   padding-left: 15px;
+  }
+  input[type="text"]:focus, input[type="email"]:focus ,input[type="password"]:focus{
+    border: 1.5px solid #4070f4;
+  }
+  .margin-top-1{
+    margin-top: 7.5px;
+  }
+  #margin-btm-1{
+    margin-bottom: 7.5px;
+  }
+  .mouse_scroller svg{
+    width: 60%;
+  }
+  @media screen and (max-width:500px) {
+    /* do your own styles */
+    .btn-btn1{
+      cursor: auto;
+    }
+    .switch-details img{
+      height: 60%;
+    }
+  }
+  @media screen and (max-width:450px){
+    .text-sm{
+        font-size:11px;
+        line-height: 14px;
+        display: inline-block;
+    }
+    .text-sm a{
+      font-size: 11px;
+    }
+    .text-md{
+      font-size: .8em;
+    }
+    
+    .country_code_selector{
+      padding: 0px;
+    }
+    .country_wrapper{
+      border: none;
+    }
+    @media screen and (max-width:500px) {
+      /* do your own styles */
+      .btn-btn1{
+        cursor: auto;
+      }
+      .switch-details img{
+        height: 50%;
+      }
+    }
+  }
+@media screen and (max-width:900px) {
+    h1{
+        font-size: 4em;
+    }
+    .p{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:720px) {
+  h1{
+      font-size: 3.5em;
+  }
+  
+}
+@media screen and (max-width:630px) {
+  h1{
+      font-size: 3em;
+  }
+  
+}
+@media screen and (max-width:590px) {
+    h1{
+        font-size: vmin;
+        line-height:1;
+    }
+    .get-started-modal{
+        max-width: 250px;
+        height: 40px;
+        font-size: small;
+    }
+}
+@media screen and (max-width:490px) {
+    h1{
+        font-size: 9vmin;
+    }
+    .p{
+        font-size: small;
+    }
+    .switch-continue button{
+        padding: 0px 7.5px;
+    }
+    .a2{
+        font-size: 10px;
+    }
+    .fixed-back{
+        width: 40px;
+        height: 40px;
+    }
+    .login .holder{
+        padding: 20px 10px 0px 10px;
+    }
+}
+.response_message{
+  
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  bottom:30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  padding:0px 15px;
+}
+.response_message.load{
+  visibility: visible;
+  bottom:50px;
+  opacity:1;
+}
+.response-handler{
+  width:auto;
+  border-radius: 10px;
+  background-color: #4070f4;
+  padding: 10px 15px;
+}
+.response-text{
+  width:100%;
+  height:100%;
+
+}
+.in-para{
+  font-size: 18px;
+}
+@media screen and (max-width:550px) {
+   .in-para{
+    font-size: 15px;
+  }
+}
+@media screen and (max-width:450px) {
+  .logo h2 {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .switch-continue button{
+    font-size: 10px;
+    padding: 0px 15px;
+    border-radius: 10px;
+  }
+  .switch-continue{
+    padding: 0px;
+  }
+  .logo:has(.switch-continue){
+    border: none;
+    background-color: transparent;
+  }
+  .switch-continue button:nth-child(1){
+    display: none;
+
+  }
+  .main-entry h1{
+    /* text-align: right; */
+    font-weight: 500;
+  }
+  .a{
+    justify-content: center;
+  }
+  .a .logo{
+    width: fit-content;
+  }
+}
