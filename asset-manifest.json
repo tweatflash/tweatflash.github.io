@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/tweatflash.github.io/static/css/main.c543eb62.css",
+    "main.js": "/tweatflash.github.io/static/js/main.9376042f.js",
+    "static/media/1.mp4": "/tweatflash.github.io/static/media/1.6774911957bab198c07b.mp4",
+    "static/media/Cooljazz.ttf": "/tweatflash.github.io/static/media/Cooljazz.a1376764f65ab6eac472.ttf",
+    "static/media/google.svg": "/tweatflash.github.io/static/media/google.0b659f8bd5ef03d25ff927bce84829a5.svg",
+    "static/media/whatsapp.svg": "/tweatflash.github.io/static/media/whatsapp.a86f37f80b09843839b781c5b4c2e40f.svg",
+    "static/media/eyeclose.svg": "/tweatflash.github.io/static/media/eyeclose.303fe36da05f649d1a9aa2bd98b2d3e0.svg",
+    "static/media/logo.svg": "/tweatflash.github.io/static/media/logo.6890acf1a9616568ef3d.svg",
+    "static/media/profile.svg": "/tweatflash.github.io/static/media/profile.62dd3eaefa5b436aca06d6874a2cda0b.svg",
+    "index.html": "/tweatflash.github.io/index.html",
+    "static/media/explore.svg": "/tweatflash.github.io/static/media/explore.57d655b585281acfec5cd5c20cd86a98.svg",
+    "static/media/eyeopen.svg": "/tweatflash.github.io/static/media/eyeopen.37345acc930d3cd1e2413f61bd25cf39.svg",
+    "static/media/email.svg": "/tweatflash.github.io/static/media/email.0548175856f1744880a1eebc52bf5bea.svg",
+    "static/media/star2.svg": "/tweatflash.github.io/static/media/star2.5112f1f7ddfdcc737bf24b32d47f0d5e.svg",
+    "static/media/home.svg": "/tweatflash.github.io/static/media/home.c3fd5a22e981f5cf83819db716374406.svg",
+    "main.c543eb62.css.map": "/tweatflash.github.io/static/css/main.c543eb62.css.map",
+    "main.9376042f.js.map": "/tweatflash.github.io/static/js/main.9376042f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c543eb62.css",
+    "static/js/main.9376042f.js"
+  ]
+}
