@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { HashRouter, Route, RouterProvider, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Layout from './main_route/layout'
 import Welcome from './welcomepage/welcome'
 import Login from './welcomepage/login'
-
 import Signin from './welcomepage/signin'
 import Home from './home_access/home'
 import Error from './errr/error'
@@ -37,9 +36,9 @@ const Main_App = () => {
     
     const {otherProfile,auth} =useContext(AuthContext)
      return (
-        <HashRouter> 
+        <Routes> 
             <Route element={<Layout/>}>
-                {/* public HashRouter still on conditions sha */}
+                {/* public routes still on conditions sha */}
                 <Route path='/' element={<App/>}>
                     <Route index element={<WelcomeXYZ/>}/>
                     <Route path='login' element={<Login/>}/>
@@ -100,7 +99,7 @@ const Main_App = () => {
             
             <Route path='*' element={<Error/>}/>
             
-        </HashRouter> 
+        </Routes> 
     )
 }
 

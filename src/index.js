@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.querySelector('.container'));
 root.render(
   <React.StrictMode>
 
-    <Router>
+    {/* <HashRouter> */}
       <GoogleOAuthProvider clientId='320205154286-lh8gfn85lg9q7vtvkof12qrfrcqt72gr.apps.googleusercontent.com'>
         <AuthProvider>
             <HashRouter>
@@ -17,6 +17,6 @@ root.render(
             </HashRouter> 
         </AuthProvider>
       </GoogleOAuthProvider>
-    </Router>
+    {/* </HashRouter> */}
   </React.StrictMode>
 );
