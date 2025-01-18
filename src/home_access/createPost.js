@@ -16,126 +16,59 @@ const CreatePosts = () => {
     const [imrg,setImrg] =useState(false)
     const [iS,setIS]=useState('')
     const [vdr,setVdr] =useState(false)
-    const [vS,setVS]=useState('')
+    const [vS,setVS]=useState('')   
     const [eachObjext,setEachObjext] =useState([])
     const [displayObject,setDisplayObject] =useState([])
-    let videoArray =[]
-    let imageArray=[]
-    // see how am using it together with form data, because for me to get the exact url of the file u have to send it using form data
-// image element
-    let img = document.querySelector('.img'); 
-    //video tag
-    let video = document.querySelector('.video'); 
-    const formData = new FormData(); 
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    
+    let formData
+    // 
+    const signedCookies = { 
+        refreshToken:cook,
+        accessToken:cookies2
+    }; 
+   
     
     
+    formData = new FormData();
     useEffect(()=>{
-        if(text){
+        // formData = new FormData();
+
+        if(text || selectedFiles.length){
             setvalidText(true)
-            // if (text){
-            formData.append('text', text)
-            // }
         }else{
             setvalidText(false)
+            formData.delete("text")
         }
+       
     },[text])
     useEffect(()=>{
-        for (let i =0; i < eachObjext.length ; i++){
-            formData.append("image", eachObjext[i])
-            // for (let pair of formData.entries()) { console.log(pair[0] + ':', pair[1]); };
-        }
-    },[eachObjext])
-    useEffect(()=>{
-        // console.log(displayObject)
-        if (displayObject){
+        if (selectedFiles.length){
             setvalidText(true)
-        }
-    },[displayObject])
-    useEffect(()=>{
-        const signedCookies = { 
-            refreshToken:cook,
-            accessToken:cookies2
-        }; 
-        formData.append('signedCookies', JSON.stringify(signedCookies)); 
-        if (fileRef.current){
-            document.querySelector('#file').addEventListener('change', async (event) => {
-                const files = Array.from(event.target.files); 
-                const files2 =  event.target.files;
-                
-                const fileContents = await Promise.all(
-                    files.map(async (file) => {
-                    return new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                
-                        reader.onload = (event) => {
-                        resolve(event.target.result); 
-                        
-                        };
-                
-                        reader.onerror = (error) => {
-                        reject(error);
-                        };
-                
-                        reader.readAsDataURL(file); // Adjust as needed (readAsDataURL, readAsArrayBuffer, etc.)
-                    });
-                    })
-                );
-                if (fileContents){
-                    
-                        let aaa=[]
-
-                        let hhh=[]
-                        // console.log(data555)
-                        for (let i=0; i<fileContents.length; i++){
-                            
-                            aaa.push({
-                                "name":files2[i].name,
-                                "type":files2[i].type.startsWith('video/') ? "v":"i",
-                                "id":i,
-                                "data":fileContents[i]
-                            })
-                            
-                        }
-                        setDisplayObject( [ ...displayObject , ...aaa] )
-                        for (let i =0; i < files2.length ; i++){
-                           
-                            setEachObjext(files2[i])
-                        }
-                    //     files.forEach((item,index)=>{
-                    //         if (item.type.startsWith('image/')){
-                    //             imageArray.push(item)
-                    //             // console.log(files[index])
-                    //         }else if (item.type.startsWith('video/')){
-                    //             videoArray.push(item)
-                    //             // console.log(files[index])
-                    //         }
-                    //     })
-                        
-                    // //    console.log(videoArray , imageArray)
-                    //     if (videoArray.length){
-                    //         for (let i =0; i < videoArray.length ; i++){
-                    //             formData.append("video", videoArray[i])
-                    //         }
-                    //     }
-                    //      if (imageArray.length){
-                    //         for (let i =0; i < imageArray.length ; i++){
-                    //             formData.append("image", imageArray[i])
-                    //         }
-                    //     }
-                        
-                    
-                }
-            });
             
         }
-           
-    //    }
-    },[])
-    
+        
+    },[selectedFiles])
+    const handleFileChange = (event) => {
+        event.preventDefault();
+        setSelectedFiles([...selectedFiles, ...Array.from(event.target.files)]);
+        
+        
+        
+        
+      };
     // then this is how I send the request
     const uploadPostToBackend= async ()=>{
-        for (let pair of formData.entries()) { console.log(pair[0] + ':', pair[1]); };
-    
+            if (text){
+                formData.append("text",text) 
+            }
+            formData.append('signedCookies', JSON.stringify(signedCookies))
+            if (selectedFiles.length){
+                selectedFiles.forEach((file) => {
+                    file.type.startsWith('image/')? formData.append('image', file) : formData.append('video', file) ;
+                });
+            }
+        for (let pair of formData.entries()) { console.log(pair[0] + ':', pair[1]); };
         // console.log(formData)
         try {
             const request =await axios.post('https://tweatflash.onrender.com/api/v1/posts/create',formData,{ headers: { 'Content-Type': 'multipart/form-data' } })
@@ -169,12 +102,18 @@ const CreatePosts = () => {
                 ></textarea>
                 
                 <>
-                    {displayObject.length ?<div className='image-video-container'>
+                    {selectedFiles.length ?<div className='image-video-container'>
                         <div className='i-v-wrapper'>
                             <div className='i-v-list'>
-                                {displayObject.map((item,index)=>(
+                                {selectedFiles.map((file)=>(
                                     <div className='p-v-i-img'>
-                                        {item.type==="i" ? <img src={item.data}/> :<video controls  src={item.data} ></video>}
+                                        <div className='pvi-h'>
+                                            <div className='pvi-ho'>
+                                            <svg width="25px" height="25px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cancel</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="work-case" fill="#ffffff" transform="translate(91.520000, 91.520000)"> <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48"> </polygon> </g> </g> </g></svg>
+                                            </div>
+                                            <div className='pvi-ho'></div>
+                                        </div>
+                                        {file.type.startsWith('image/') ? <img src={URL.createObjectURL(file)}/> :<video controls  src={URL.createObjectURL(file)} ></video>}
                                     </div>
                                 ))}
                             </div>
@@ -187,7 +126,7 @@ const CreatePosts = () => {
             <div className='posts-optipons'>
                 <div className='post-option-container'>
                     <div className='create-action'>
-                        <input id='file' ref={fileRef} type='file' className='file-selector' accept='image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime' multiple tabIndex={'-1'} />
+                        <input id='file' ref={fileRef} onChange={handleFileChange} type='file' className='file-selector' accept='image/jpeg,image/png,image/webp,image/gif,video/mp4,video/quicktime' multiple tabIndex={'-1'} />
                         <label htmlFor='file'>
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.2639 15.9375L12.5958 14.2834C11.7909 13.4851 11.3884 13.086 10.9266 12.9401C10.5204 12.8118 10.0838 12.8165 9.68048 12.9536C9.22188 13.1095 8.82814 13.5172 8.04068 14.3326L4.04409 18.2801M14.2639 15.9375L14.6053 15.599C15.4112 14.7998 15.8141 14.4002 16.2765 14.2543C16.6831 14.126 17.12 14.1311 17.5236 14.2687C17.9824 14.4251 18.3761 14.8339 19.1634 15.6514L20 16.4934M14.2639 15.9375L18.275 19.9565M18.275 19.9565C17.9176 20 17.4543 20 16.8 20H7.2C6.07989 20 5.51984 20 5.09202 19.782C4.71569 19.5903 4.40973 19.2843 4.21799 18.908C4.12796 18.7313 4.07512 18.5321 4.04409 18.2801M18.275 19.9565C18.5293 19.9256 18.7301 19.8727 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V16.4934M4.04409 18.2801C4 17.9221 4 17.4575 4 16.8V7.2C4 6.0799 4 5.51984 4.21799 5.09202C4.40973 4.71569 4.71569 4.40973 5.09202 4.21799C5.51984 4 6.07989 4 7.2 4H16.8C17.9201 4 18.4802 4 18.908 4.21799C19.2843 4.40973 19.5903 4.71569 19.782 5.09202C20 5.51984 20 6.0799 20 7.2V16.4934M17 8.99989C17 10.1045 16.1046 10.9999 15 10.9999C13.8954 10.9999 13 10.1045 13 8.99989C13 7.89532 13.8954 6.99989 15 6.99989C16.1046 6.99989 17 7.89532 17 8.99989Z" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </label>
@@ -207,7 +146,7 @@ const CreatePosts = () => {
                         </svg> 
                     </div>
                     <div className='create-action'>
-                        <svg fill="#000000"  className="hash" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g data-name="Layer 2"> <g data-name="hash"> <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect> <path d="M20 14h-4.3l.73-4H20a1 1 0 0 0 0-2h-3.21l.69-3.81A1 1 0 0 0 16.64 3a1 1 0 0 0-1.22.82L14.67 8h-3.88l.69-3.81A1 1 0 0 0 10.64 3a1 1 0 0 0-1.22.82L8.67 8H4a1 1 0 0 0 0 2h4.3l-.73 4H4a1 1 0 0 0 0 2h3.21l-.69 3.81A1 1 0 0 0 7.36 21a1 1 0 0 0 1.22-.82L9.33 16h3.88l-.69 3.81a1 1 0 0 0 .84 1.19 1 1 0 0 0 1.22-.82l.75-4.18H20a1 1 0 0 0 0-2zM9.7 14l.73-4h3.87l-.73 4z"></path> </g> </g> </g></svg>
+                        <svg fill="#ffffff"  className="hash" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g data-name="Layer 2"> <g data-name="hash"> <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect> <path d="M20 14h-4.3l.73-4H20a1 1 0 0 0 0-2h-3.21l.69-3.81A1 1 0 0 0 16.64 3a1 1 0 0 0-1.22.82L14.67 8h-3.88l.69-3.81A1 1 0 0 0 10.64 3a1 1 0 0 0-1.22.82L8.67 8H4a1 1 0 0 0 0 2h4.3l-.73 4H4a1 1 0 0 0 0 2h3.21l-.69 3.81A1 1 0 0 0 7.36 21a1 1 0 0 0 1.22-.82L9.33 16h3.88l-.69 3.81a1 1 0 0 0 .84 1.19 1 1 0 0 0 1.22-.82l.75-4.18H20a1 1 0 0 0 0-2zM9.7 14l.73-4h3.87l-.73 4z"></path> </g> </g> </g></svg>
                     </div>
                     <div className='create-action'>
                         <svg className='hash' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7 11h7v2H7zm0-4h10.97v2H7zm0 8h13v2H7zM4 4h2v16H4z"></path></g></svg>

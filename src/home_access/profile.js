@@ -12,6 +12,8 @@ const Profile = () => {
   const {width}=useWindowSize()
   const [userPosts,setUserPosts] = useState([])
   const [pLoader,setPloader]=useState(true)
+  const [np,SetNp]=useState([])
+
   let postRemain
   // console.log(userAuth)
   const postsRef =useRef(null)
@@ -20,6 +22,9 @@ const Profile = () => {
       indexing = 0,
       newPosts=[]
   let user={}
+  useEffect(()=>{
+    console.log(np)
+  },[np])
    const fetchPosts=async ()=>{
       try {
         const request =await axios.post(`/posts/user/${userAuth.user.username}`,{
@@ -39,11 +44,11 @@ const Profile = () => {
           counter = response.data.posts.length
           for (let i =0;  i<counter; i++){
               newPosts.push(response.data.posts[i])
-             
+              
+            
           }
-          
-
-          setUserPosts([...userPosts,...newPosts])
+          setUserPosts([...userPosts, ...newPosts])
+          // newPosts=[]
           indexing = indexing+ counter
           setPloader(false)
           postRemain=response.data.posts.length
@@ -51,6 +56,20 @@ const Profile = () => {
       } catch (error) {
         console.log(error)
       }
+    }
+    function appendUniqueData(arrayA, arrayB) {
+      // Create a Set to store unique IDs
+      const uniqueIds = new Set(arrayA.map(obj => obj.id));
+    
+      // Filter arrayB to only include objects with unique IDs
+      const newObjects = arrayB.filter(obj => !uniqueIds.has(obj.id));
+    
+      // Append new objects to arrayA
+      // arrayA.push(...newObjects);
+      setUserPosts([...userPosts,...newObjects])
+    
+      // Update unique IDs
+      newObjects.forEach(obj => uniqueIds.add(obj.id));
     }
     const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {

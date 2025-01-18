@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 import useWindowSize from '../hooks/useWindowSize'
 import AuthContext from '../context/authProvider'
+import { AsyncImage } from 'loadable-image'
+import { Blur, Grow, Slide } from 'transitions-kit'
+import Content_wrapper from './content_wrapper'
 const Feed = ({item,index}) => {
     const postsRef =useRef(null)
     const {width}=useWindowSize()
@@ -58,10 +61,24 @@ const Feed = ({item,index}) => {
             setHomeErr(`Sorry an unexpected error occured`)
         }
     }
+    const loadImage=async (img)=>{
+        return profileImg
+        // console.log(profileImg)
+    //    try {
+    //     const data = await fetch(img)
+    //     const response = await data.blob()
+    //     return URL.createObjectURL(response);
+    //    } catch (error) {
+    //      return profileImg
+    //    }
+        
+        
+    }
+
     return (
         <div className='posts' tabIndex={"0"} onClick={()=>{
             if (postClick){
-            navigate(`/${item.user.username}/status/${item._id}`)
+                navigate(`/${item.user.username}/status/${item._id}`)
             }
             // 
             console.log(item)
@@ -74,7 +91,13 @@ const Feed = ({item,index}) => {
                     <div className='p-header-content'>
                         <div className='pp-content'>
                         <div className='pp-image' tabIndex={"2"} onFocus={()=>setPostClick(false)} onBlur={()=>setPostClick(true)}>
-                            {item.user.profileImage ? <img src={item.user.profileImage} /> : <img src={profileImg}/>}
+                            {item.user.profileImage ? <AsyncImage
+                                key={index}
+                                src={item.user.profileImage}
+                                Transition={Blur}
+                                style={{ width: "100%", height: "100%", borderRadius: 50 }}
+                                loader={<div style={{ background: '#888' }} />}
+                            /> : <img src={profileImg}/>}
                         </div>
                         </div>
                         <div className='nu-content'>
@@ -108,16 +131,7 @@ const Feed = ({item,index}) => {
                             <span className='psts_text'>{`${item.text.slice(0,300 )}${item.text.length >300 ? "..." :""}`}</span>
                         </p>
                         </div> :<></>}
-                        {item.video && item.video.length ? <video className='blog-video' src={item.video[0]} controls></video> : <></>}
-                        {item.img && !item.video? 
-                            <div className='posts-img' onClick={(e)=>{
-                            e.preventDefault()
-                            
-                            }}>
-                            <img src={item.img} tabIndex={"2"} onFocus={()=>setPostClick(false)} onBlur={()=>setPostClick(true)}/>
-                            </div>
-                        : <></> }
-
+                        <Content_wrapper item={item} setPostClick={setPostClick} />
                     </div>
                     <div className='post-reaction'>
                         <div className='reaction-posts'>

@@ -15,6 +15,7 @@ const Posts = () => {
   const postsRef =useRef(null)
   const [stories,setStories] =useState([])
   // const cookiep=useCookies()
+  const [you ,setYou] =useState([])
   let counter = 0,
     indexing = 0,
     newPosts=[]
@@ -37,7 +38,9 @@ const Posts = () => {
           }
           // newPosts = newPosts.filter(item => displayHeader.includes(item));
           // console.log(filteredArrayB)
-          setDisplayHeader([...displayHeader,...newPosts])
+          
+          setDisplayHeader([...displayHeader, ...newPosts]);
+          // newPosts=[]
           indexing = indexing+ counter
   
         }
@@ -179,6 +182,9 @@ const Posts = () => {
                     
                   </div>
                 </div>
+                {/* <div className="loader_holder"> */}
+                      <div className='loader-line'></div>
+                    {/* </div> */}
       </header>
       <>
           {stories.length?<div className='status'>
@@ -247,5 +253,7 @@ const Posts = () => {
     </div>
   )
 }
+
+
 
 export default Posts
