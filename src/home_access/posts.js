@@ -19,7 +19,7 @@ const Posts = () => {
   let counter = 0,
     indexing = 0,
     newPosts=[]
-  const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,displayHeader,setDisplayHeader} =useContext(AuthContext)
+  const {auth,cook,cookies2 , uploadPost,setUploadPost ,setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,displayHeader,setDisplayHeader} =useContext(AuthContext)
   const [postClick,setPostClick]=useState(true)
   const navigate= useNavigate()
   const fetchPosts2=async ()=>{
@@ -68,35 +68,35 @@ const Posts = () => {
       console.log(error)
     }
   }
-  window.onscroll=()=>{
-    if (HeaderRef.current){
-      var prevScrollpos = window.scrollY; 
-      window.onscroll = function() { 
-          if (width<=450){
-            var currentScrollPos = window.scrollY; 
-            // console.log(eval(prevScrollpos - currentScrollPos))
+  // window.onscroll=()=>{
+  //   if (HeaderRef.current){
+  //     var prevScrollpos = window.scrollY; 
+  //     window.onscroll = function() { 
+  //         if (width<=450){
+  //           var currentScrollPos = window.scrollY; 
+  //           // console.log(eval(prevScrollpos - currentScrollPos))
 
-            if (eval(prevScrollpos - currentScrollPos )>=5  && width<=450) { 
-              document.querySelector("header").classList.remove("hidden"); 
-            } else if (eval(prevScrollpos - currentScrollPos )<= -10  && width<=450) { 
-              document.querySelector("header").classList.add("hidden"); 
-            } else{
+  //           if (eval(prevScrollpos - currentScrollPos )>=5  && width<=450) { 
+  //             document.querySelector("header").classList.remove("hidden"); 
+  //           } else if (eval(prevScrollpos - currentScrollPos )<= -10  && width<=450) { 
+  //             document.querySelector("header").classList.add("hidden"); 
+  //           } else{
               
-            }
-          prevScrollpos = currentScrollPos; 
-        }else if(width>450){
+  //           }
+  //         prevScrollpos = currentScrollPos; 
+  //       }else if(width>450){
           
-          // document.querySelector("header").classList.remove("hidden"); 
-        }
-      }
-    }
-  }
-  window.onresize=()=>{
-    if (width>450 && HeaderRef.current){
-      document.querySelector("header").classList.remove("hidden"); 
-      // console.log(location)
-    }
-  }
+  //         // document.querySelector("header").classList.remove("hidden"); 
+  //       }
+  //     }
+  //   }
+  // }
+  // window.onresize=()=>{
+  //   if (width>450 && HeaderRef.current){
+  //     document.querySelector("header").classList.remove("hidden"); 
+  //     // console.log(location)
+  //   }
+  // }
       
    const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -183,7 +183,7 @@ const Posts = () => {
                   </div>
                 </div>
                 {/* <div className="loader_holder"> */}
-                      <div className='loader-line'></div>
+                      {uploadPost ? <div className='loader-line'></div> : <></>}
                     {/* </div> */}
       </header>
       <>

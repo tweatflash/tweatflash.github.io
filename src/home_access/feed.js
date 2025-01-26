@@ -14,7 +14,7 @@ const Feed = ({item,index}) => {
     let counter = 0,
     indexing = 0,
     newPosts=[]
-    const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,displayHeader,setDisplayHeader} =useContext(AuthContext)
+    const {auth,cook,cookies2 , imgUrl,setImgUrl ,setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,im,setIm,setDisplayHeader} =useContext(AuthContext)
     const [postClick,setPostClick]=useState(true)
     const navigate= useNavigate()
     function time(date) {
@@ -77,11 +77,11 @@ const Feed = ({item,index}) => {
 
     return (
         <div className='posts' tabIndex={"0"} onClick={()=>{
-            if (postClick){
-                navigate(`/${item.user.username}/status/${item._id}`)
-            }
+            // if (postClick){
+            //     navigate(`/${item.user.username}/status/${item._id}`)
+            // }
             // 
-            console.log(item)
+            // console.log(item)
         
         }} key={item._id}>
                 <div className='post-contain'>
@@ -131,7 +131,7 @@ const Feed = ({item,index}) => {
                             <span className='psts_text'>{`${item.text.slice(0,300 )}${item.text.length >300 ? "..." :""}`}</span>
                         </p>
                         </div> :<></>}
-                        <Content_wrapper item={item} setPostClick={setPostClick} />
+                        <Content_wrapper item={item} setPostClick={setPostClick}  imgUrl={imgUrl} setIm={setIm} im={im} setImgUrl={setImgUrl} />
                     </div>
                     <div className='post-reaction'>
                         <div className='reaction-posts'>

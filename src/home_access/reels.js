@@ -31,12 +31,12 @@ const Reels = () => {
             console.log(response.data.posts)
             if (response.data.posts.length){
                 count2 = response.data.posts.length
-                console.log(count2, index2)
+                // console.log(count2, index2)
                 for (let i =0;  i<count2; i++){
                     hhh.push(response.data.posts[i])
                    
                 }
-                console.log(hhh)
+                // console.log(hhh)
                 setVid([...vid,...hhh])
                 index2 = index2+ count2
             } 
@@ -82,21 +82,21 @@ const Reels = () => {
     
     return (
         <div className='container-reels'>
-            <div className='bookmark_header community-header'>
-                <button>
-                <svg viewBox="0 0 24 24" fill="none" ><g  strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g> <path d="M11 6L5 12M5 12L11 18M5 12H19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
-                back
-                </button>
-                <h2><span><svg className="bookmars-svg" style={{width:"25px",marginRight:"5px"}} viewBox="0 0 24 24">
-                    <g style={{strokeWidth:"2",stroke:"#ffffff",fill:"none"}}>
-                        <path d="M3 9H9.5M21 9H9.5M9.5 9L14.5 4M14.5 4H17.8C18.8467 4 19.4044 4 19.8221 4.1779M14.5 4H6.2C5.07989 4 4.51984 4 4.09202 4.21799C3.71569 4.40973 3.40973 4.71569 3.21799 5.09202C3 5.51984 3 6.07989 3 7.2V16.8C3 17.9201 3 18.4802 3.21799 18.908C3.40973 19.2843 3.71569 19.5903 4.09202 19.782C4.51984 20 5.07989 20 6.2 20H17.8C18.9201 20 19.4802 20 19.908 19.782C20.2843 19.5903 20.5903 19.2843 20.782 18.908C21 18.4802 21 17.9201 21 16.8V7.2C21 6.07989 21 5.51984 20.782 5.09202C20.5903 4.71569 20.2843 4.40973 19.908 4.21799C19.88 4.20371 19.8514 4.19037 19.8221 4.1779M9 4L4 9M15 9.00015L19.8221 4.1779M15 14.5L10 17.5V11.5L15 14.5Z"></path>
-                        
-                    </g>
-                </svg></span>Trends</h2>
-            </div>
+            
 
             <div className='reels-container'>
                 <div className='reels-wrapper' id="reels-wrapper" dir="ltr">
+                <div className='viewer-options'>
+                    <div className='viewer-cancel' onClick={ ()=>{
+                        // setIm(false)
+                        // setImgUrl("")
+                    }}>
+                    <svg width="25px" height="25px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>cancel</title> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="work-case" fill="#ffffff" transform="translate(91.520000, 91.520000)"> <polygon id="Close" points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48"> </polygon> </g> </g> </g></svg>
+                    </div>
+                    <div className='viewer-select'>
+
+                    </div>
+                </div>
                     {
                         vid.map((item,index)=>(
                            <Reallllllllll item={item} index={index}/>

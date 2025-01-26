@@ -25,6 +25,8 @@ export const AuthProvider= ({children})=>{
     const [viewhd,setViewhd]=useState(true)
     const [imgUrl,setImgUrl]=useState("")
     const [fnp,setFnp] =useState(true)
+    const [uploadPost,setUploadPost] =useState(false)
+    const [im,setIm]=useState(false)
     const cookies = new Cookies();
     let counter = 0
     let indexing = 0
@@ -157,8 +159,8 @@ export const AuthProvider= ({children})=>{
   },[cook , cookies2])
   
   useEffect(()=>{
-   
-  },[])
+   console.log(imgUrl)
+  },[imgUrl])
   
   useEffect(()=>{
     if (auth && fnp){
@@ -208,7 +210,13 @@ export const AuthProvider= ({children})=>{
               setAllowCookies,
               sidenav,
               setSideNav,
-              setFnp
+              setFnp,
+              uploadPost,
+              setUploadPost,
+              imgUrl,
+              setImgUrl,
+              im,
+              setIm
             }
           }>
             {children}

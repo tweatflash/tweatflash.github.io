@@ -3,10 +3,11 @@ import './profile.css'
 import AuthContext from '../context/authProvider'
 import profileImg from '../assets/images/svg/profile.svg'
 import useWindowSize from '../hooks/useWindowSize'
-
+import { Blur, Grow, Slide } from 'transitions-kit'
 import axios from '../api/axios'
 import Feed from './feed'
 import Posts from './posts'
+import { AsyncImage } from 'loadable-image'
 const Profile = () => {
   const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,displayHeader,setDisplayHeader} =useContext(AuthContext)
   const {width}=useWindowSize()
@@ -67,7 +68,7 @@ const Profile = () => {
       // Append new objects to arrayA
       // arrayA.push(...newObjects);
       setUserPosts([...userPosts,...newObjects])
-    
+      
       // Update unique IDs
       newObjects.forEach(obj => uniqueIds.add(obj.id));
     }
@@ -95,11 +96,7 @@ const Profile = () => {
           <svg viewBox="0 0 24 24" fill="none" ><g  strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g> <path d="M11 6L5 12M5 12L11 18M5 12H19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
           back
           </button>
-          <h2><span><svg className="bookmars-svg" viewBox="0 0 1024 1024">
-              <g>
-                  <path d="M665.6 768L512 614.4 358.4 768V256h307.2v512zM512 537.6L614.4 640V307.2H409.6V640L512 537.6z"></path>
-              </g>
-          </svg></span>Profile</h2>
+          <h2><span></span>Profile</h2>
         </div>
       <div className='profile_data'>
           <div className='profile_wrapper'>
@@ -108,7 +105,13 @@ const Profile = () => {
                 {userAuth.user.coverImage ? <img src={userAuth.user.coverImage} className='img'/> :<></>}
                 <div className='profile_image'>
                   <div className='prf-img'>
-                    {userAuth.user.profileImage ? <img src={userAuth.user.profileImage} /> : <img style={ width <= 450 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>}
+                    {userAuth.user.profileImage ?  <AsyncImage
+                                                   
+                                                    src={userAuth.user.profileImage}
+                                                    Transition={Blur}
+                                                    style={{ width: "96%", height: "96%", borderRadius: "50%" }}
+                                                    loader={<div style={{ background: '#888' }} />}
+                                                />: <img style={ width <= 450 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>}
                   </div>
                   
                 </div>

@@ -9,7 +9,7 @@ const CreatePosts = () => {
     const {width} =useWindowSize()
     const navigate=useNavigate()
     const fileRef =useRef(null)
-    const {cook,cookies2}=useContext(AuthContext)
+    const {cook,cookies2,setUploadPost,setBooleanErrHome,setHomeErr}=useContext(AuthContext)
     const [text,setText] =useState("")
     const [validText,setvalidText] =useState(false)
     const [v,setV]=useState("")
@@ -20,6 +20,7 @@ const CreatePosts = () => {
     const [eachObjext,setEachObjext] =useState([])
     const [displayObject,setDisplayObject] =useState([])
     const [selectedFiles, setSelectedFiles] = useState([]);
+
     
     let formData
     // 
@@ -38,7 +39,7 @@ const CreatePosts = () => {
             setvalidText(true)
         }else{
             setvalidText(false)
-            formData.delete("text")
+            // formData.delete("text")
         }
        
     },[text])
@@ -53,12 +54,10 @@ const CreatePosts = () => {
         event.preventDefault();
         setSelectedFiles([...selectedFiles, ...Array.from(event.target.files)]);
         
-        
-        
-        
       };
     // then this is how I send the request
     const uploadPostToBackend= async ()=>{
+            
             if (text){
                 formData.append("text",text) 
             }
@@ -68,14 +67,23 @@ const CreatePosts = () => {
                     file.type.startsWith('image/')? formData.append('image', file) : formData.append('video', file) ;
                 });
             }
-        for (let pair of formData.entries()) { console.log(pair[0] + ':', pair[1]); };
+        // for (let pair of formData.entries()) { console.log(pair[0] + ':', pair[1]); };
         // console.log(formData)
+        setUploadPost(true)
+        navigate("/home")
         try {
             const request =await axios.post('https://tweatflash.onrender.com/api/v1/posts/create',formData,{ headers: { 'Content-Type': 'multipart/form-data' } })
             const response=await request
             console.log(request)
+            if (request.status===201){
+                setUploadPost(false)
+                setBooleanErrHome(true)
+                setHomeErr(`Post uploaded successfully`)
+            }
         } catch (error) {
             console.log(error)
+            setBooleanErrHome(true)
+            setHomeErr(`Failed to uploaded post`)
         }
 
 
@@ -102,7 +110,7 @@ const CreatePosts = () => {
                 ></textarea>
                 
                 <>
-                    {selectedFiles.length ?<div className='image-video-container'>
+                    {selectedFiles.length ?<div className='image-video-container '>
                         <div className='i-v-wrapper'>
                             <div className='i-v-list'>
                                 {selectedFiles.map((file)=>(
