@@ -14,7 +14,7 @@ const Explore = () => {
   const data=useParams()
   const {width}=useWindowSize()
   const [userAuth,setUserAuth]=useState("")
-  const mobile=width<=450
+  const mobile=width<=550
   const mobile2=width>=450
   const {auth,setOtherProfile,displayBottomNav,cook,cookies2}=useContext(AuthContext)
   // console.log(data.user)

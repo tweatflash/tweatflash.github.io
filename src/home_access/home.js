@@ -96,7 +96,7 @@ const Home = () => {
                 <div className='main'>
                     <div className='hmmmshit'>
                     
-                    {width <=450 ? <></> : <nav className='route_nav_wrapper'>
+                    {width <=550 ? <></> : <nav className='route_nav_wrapper'>
                         
                         <Navigation_Menu/>
                         
@@ -133,7 +133,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        {width >450? <div className='css0001_mre'>
+                        {width >550? <div className='css0001_mre'>
                             <div className='chck_sm'>
                                 
                             </div>
@@ -143,7 +143,7 @@ const Home = () => {
                     </div>
                     </div>
                 </div>
-                {width <=450 ? <Botttom_nav/> : <></>}
+                {width <=550 ? <Botttom_nav/> : <></>}
                
             </div>
         </div>

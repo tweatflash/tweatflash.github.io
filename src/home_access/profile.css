@@ -205,9 +205,12 @@
   }
 .posts-container , .posts_profile , .posts-container{ 
     height: fit-content;
-    min-height: auto;
+    min-height: auto !important;
 }
-@media screen and (max-width:450px){
+.nu-content .profile-details{
+    padding: 0px !important;
+}
+@media screen and (max-width:550px){
     .profile_image{
         width: 90px;
         height: 90px;

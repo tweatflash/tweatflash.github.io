@@ -32,7 +32,8 @@ const Profile = () => {
           signedCookies:JSON.stringify({
             refreshToken: cook,
             accessToken:cookies2
-          })
+          }),
+          skipCount:eval(counter + userPosts.length)
         })
         const response=await request
         if(response.data){
@@ -111,13 +112,13 @@ const Profile = () => {
                                                     Transition={Blur}
                                                     style={{ width: "96%", height: "96%", borderRadius: "50%" }}
                                                     loader={<div style={{ background: '#888' }} />}
-                                                />: <img style={ width <= 450 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>}
+                                                />: <img style={ width <= 550 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>}
                   </div>
                   
                 </div>
               </div>
             </div>
-            <div className={`profile-details-data ${ width <= 450 ? "profile-mbl": "profile-nml" }`}>
+            <div className={`profile-details-data ${ width <= 550 ? "profile-mbl": "profile-nml" }`}>
               <div className='profile-patch'>
                 <button>Edit Profile</button>
               </div>
@@ -179,14 +180,14 @@ const Profile = () => {
                       <div className='post-list'>
                         <div className='posts-order-wrapper'>
                           {
-                            userPosts.map(item=>(<Feed item={item}/>))
+                            userPosts.map((item,index)=>(<Feed item={item} index={index} type={"p"}/>))
                           }
                           <>
                             {
                                <div className='btm-ssf' id ="posts-rld" ref={postsRef}><div class="spinner-4"></div></div>
                             }
                           </>
-                          <div className={`btm-nav-cvr ${width <=450 ? "av-und-spc" :""}`}></div>
+                          <div className={`btm-nav-cvr ${width <=550 ? "av-und-spc" :""}`}></div>
                         </div>
                       </div>
                     </div>

@@ -1,3 +1,4 @@
+import { Blur, Grow, Slide } from 'transitions-kit'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./posts.css"
 import profileImg from '../assets/images/svg/profile.svg'
@@ -7,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from '../api/axios'
 import Header from './header'
 import Feed from './feed'
+import { AsyncImage } from 'loadable-image'
 // import useCookies from '../hooks/useCookies'
 // 
 const Posts = () => {
@@ -28,16 +30,25 @@ const Posts = () => {
           signedCookies:JSON.stringify({
             refreshToken: cook,
             accessToken:cookies2
-          })
+          }),
+          // body:{
+            Ids:[]
+          // }
         })
         const response=await request
         if(response.data.posts.length){
           counter = response.data.posts.length
           for (let i =0;  i<counter; i++){
-             newPosts.push(response.data.posts[i])
+            // for (let i = 0; i < displayHeader.length; i++) {
+            //   const element = array[i];
+            // }
+            // displayHeader.forEach(item=>{
+              // console.log('displayHeader')
+              // console.log(displayHeader)
+              newPosts.push(response.data.posts[i])
+            // })
           }
-          // newPosts = newPosts.filter(item => displayHeader.includes(item));
-          // console.log(filteredArrayB)
+         
           
           setDisplayHeader([...displayHeader, ...newPosts]);
           // newPosts=[]
@@ -53,6 +64,8 @@ const Posts = () => {
       }
   
   }
+  let itemToRemove=[]
+  // const result = newArray.filter((item) => postArray.some(data=> data.id === item.id))
   const fetchStories=async ()=>{
     try {
       const request =await axios.post("/stories/following",{
@@ -68,35 +81,6 @@ const Posts = () => {
       console.log(error)
     }
   }
-  // window.onscroll=()=>{
-  //   if (HeaderRef.current){
-  //     var prevScrollpos = window.scrollY; 
-  //     window.onscroll = function() { 
-  //         if (width<=450){
-  //           var currentScrollPos = window.scrollY; 
-  //           // console.log(eval(prevScrollpos - currentScrollPos))
-
-  //           if (eval(prevScrollpos - currentScrollPos )>=5  && width<=450) { 
-  //             document.querySelector("header").classList.remove("hidden"); 
-  //           } else if (eval(prevScrollpos - currentScrollPos )<= -10  && width<=450) { 
-  //             document.querySelector("header").classList.add("hidden"); 
-  //           } else{
-              
-  //           }
-  //         prevScrollpos = currentScrollPos; 
-  //       }else if(width>450){
-          
-  //         // document.querySelector("header").classList.remove("hidden"); 
-  //       }
-  //     }
-  //   }
-  // }
-  // window.onresize=()=>{
-  //   if (width>450 && HeaderRef.current){
-  //     document.querySelector("header").classList.remove("hidden"); 
-  //     // console.log(location)
-  //   }
-  // }
       
    const io = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -134,7 +118,9 @@ const Posts = () => {
                 <div className='header_navigation'>
                   <div className='set1'  onClick={()=>setSideNav(true)}>
                       <div className="l-logo">
-                          <svg viewBox="0 0 24 24" ><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg>
+                          {/* <svg viewBox="0 0 24 24" > */}
+                          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H14M4 18H9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                          {/* </svg> */}
                       </div>
                       {/* <div className="m-logo">
                         <div className="a1"></div>
@@ -145,7 +131,13 @@ const Posts = () => {
                   </div>
                   <div className='set2'>
                     <div className='profile-dp'>
-                      {auth && userAuth ? <img src={userAuth.user.profileImage} /> : <img style={{width:"100%"}} src={profileImg}/>}
+                      {auth && userAuth ? <AsyncImage
+                                                                         
+                          src={userAuth.user.profileImage}
+                          Transition={Blur}
+                          style={{ width: "96%", height: "96%", borderRadius: "50%" }}
+                          loader={<div style={{ background: '#888' }} />}
+                        /> : <img style={{width:"100%"}} src={profileImg}/>}
                     </div>
                     {
                       width<=450? <div className='notification'>
@@ -154,7 +146,7 @@ const Posts = () => {
                     }
                   </div>
                 </div>
-                <div className='filter_posts'>
+                {/* <div className='filter_posts'>
                   <div className='filter_holder'>
                     <div className='filter_select'>
                       <div className='filter_option active'>
@@ -181,7 +173,7 @@ const Posts = () => {
                     </div>
                     
                   </div>
-                </div>
+                </div> */}
                 {/* <div className="loader_holder"> */}
                       {uploadPost ? <div className='loader-line'></div> : <></>}
                     {/* </div> */}
@@ -239,12 +231,12 @@ const Posts = () => {
         
         {displayHeader ? 
           <div className='posts-order-wrapper'> 
-            {displayHeader.map((item,index)=>(<Feed item={item } index={index}/>))}                                                                                                                                                                                                                                                                                                                                                                 
+            {displayHeader.map((item,index)=>(<Feed item={item } index={index} type={"p"}/>))}                                                                                                                                                                                                                                                                                                                                                                 
             <div className='btm-ssf' id ="posts-rld" ref={postsRef}>
               <div class="spinner-4"></div>
             </div>
   
-            <div className={`btm-nav-cvr ${width <=450 ? "av-und-spc" :""}`} ></div>
+            <div className={`btm-nav-cvr ${width <=550 ? "av-und-spc" :""}`} ></div>
             
           </div>
           : <></>}

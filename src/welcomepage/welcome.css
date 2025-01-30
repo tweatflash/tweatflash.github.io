@@ -900,6 +900,18 @@ input[type="radio"]:checked{
 .page_intro{
   text-align: center;
 }
+.wrapper::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,.6);
+  z-index: 5;
+  /* backdrop-filter: blur(10px); */
+  visibility: hidden;
+  transition: .3s;
+  top: 0px;
+}
 @media screen and (max-height:750px) {
    .country_code_selector ul,.country_wrapper{
       height: 100%;
@@ -916,6 +928,44 @@ input[type="radio"]:checked{
   }
   .switch-details img{
     height: 60%;
+  }
+  .login{
+    background-color: var(--main-color2);
+  }
+  .login .wrapper{
+    width: 100%;
+    max-width: 100%;
+  }
+  .login .holder{
+    padding: 0px;
+    background-color: #111;
+  }
+  .more-content-layout{
+    background-color: transparent;
+    text-align: left;
+  }
+  .loader_holder{
+    top: 0px;
+  }
+  .loader_holder{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+    z-index: 20;
+    border-radius: 0px;
+    background-color: #111;
+  }
+  .wrapper:has(.more-content-layout.dim)::before{
+    top: 5px;
+    visibility: visible;
+  }
+  .dim::before{
+    
+    visibility: hidden;
+  }
+  .fixed-back{
+    transform: translate(15px,15px);
   }
 }
 @media screen and (max-width:450px){
@@ -937,13 +987,15 @@ input[type="radio"]:checked{
   .country_wrapper{
     border: none;
   }
-  @media screen and (max-width:500px) {
-    /* do your own styles */
-    .btn-btn1{
-      cursor: auto;
-    }
-    .switch-details img{
-      height: 50%;
-    }
-  }
+  
 } 
+@media screen and (max-width:500px) {
+  /* do your own styles */
+  .btn-btn1{
+    cursor: auto;
+  }
+  .switch-details img{
+    height: 50%;
+  }
+  
+}

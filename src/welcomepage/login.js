@@ -29,8 +29,10 @@ const Login = () => {
       
     },[])
     useEffect(() => {
-      if (email){
+      if (email.length){
         setValidEmail(true)
+      }else{
+        setValidEmail(false)
       }
      
     }, [email])
@@ -59,7 +61,7 @@ const Login = () => {
     if (validEmail && !progress){
         showLoader()
         e.preventDefault()
-        const ipt2=emailRegex.test(email)
+        const ipt2=email
         if (!ipt2){
 
             return;
@@ -187,7 +189,7 @@ const lets_go_login=async ()=>{
               <button className="btn-btn1 btn-blue" disabled={!validEmail} onClick={handleSubmit}type="submit">Next</button>
               
           <Link to={"/"}>Don't have an account ?</Link>
-         </form>
+         </form> 
     </div>
     ) : (
       <div>
