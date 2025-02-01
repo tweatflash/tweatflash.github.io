@@ -16,14 +16,14 @@
 .profile_wrapper{
     width: 100%;
     height: 100%;
-    padding: 10px;
+    /* padding: 10px; */
 }
 .cover_image{
     width: 100%;
     height: 150px;
-    border-radius: 5px;
-    border:.51px solid var(--border-color2);
-    background-color: var(--post-color2);
+    /* border-radius: 5px; */
+    /* border:.51px solid var(--border-color2); */
+    /* background-color: var(--post-color2); */
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -33,7 +33,7 @@
 .cvr-img{
     width: 100%;
     height: 100%;
-    border-radius: inherit;
+    /* border-radius: inherit; */
     /* background-image: linear-gradient(to right,blue ,purple); */
     background-color: #222;
     background-color: var(--post-color2);
@@ -83,6 +83,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
+    padding: 0px 15px;
 }
 .profile-patch button{
     height: fit-content;
@@ -112,29 +113,37 @@
     
 }
 .userName span{
-    padding: 0px 5px;
-    background-color: var(--post-color2);
-    border: 1px solid var(--border-color2);
+    /* padding: 0px 5px; */
+    /* background-color: var(--post-color2); */
+    /* border: 1px solid var(--border-color2); */
+    color: var(--span2);
     display: inline-block;
     border-radius: 20px;
 }
 .profile-details span{
     font-size: 14px;
 }
-.user_engaugement{
+.user_e_dta{
     width: 100%;
     display: flex;
+    justify-content: center;
+    padding: 15px 10px;
+}
+.user_engaugement{
+    width: auto;
+    display: flex;
     flex-wrap: nowrap;
-    gap: 10px;
-    padding-top: 10px;
+    justify-content: center;
+    gap: 20px;
+    padding: 0px 20px;
+    border-radius: 20px;
+    background-color: var(--post-color2);
 }
 .user-eng{
     height: 40px;
-    width: 33.333%;
-    border: 1px solid var(--border-color2);
-    background-color: var(--border-color2);
+    /* width: 33.333%; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     border-radius: 10px;
     font-size: small;
@@ -210,16 +219,26 @@
 .nu-content .profile-details{
     padding: 0px !important;
 }
+.filter_posts{ 
+    border-top:.3px inset var(--border-color2);
+    border-bottom:.1px inset var(--border-color);
+    padding: 5px 15px;
+    /* position: sticky; */
+    top: 0px;
+    background-color: var(--main-color2);
+    
+}
 @media screen and (max-width:550px){
     .profile_image{
         width: 90px;
         height: 90px;
+        margin: auto;
         /* transform: translateX(0px); */
-        left: 10px;
+        /* left:15px; */
         bottom: -45px;
     }
-    .profile-details-data .profile-details{
-        padding-left: 10px;
+    /* .profile-details-data .profile-details{
+        padding-left: 15px;
     }
     .profile-details{
         text-align: left;
@@ -227,5 +246,5 @@
     }
     .useromin{
         justify-content: left;
-    }
+    } */
 }

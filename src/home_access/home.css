@@ -9,7 +9,7 @@
     --text2:#f4f7fe;
     /* --text2:#000; */
     --span:#111;
-    --span2:#DFE3E9;
+    --span2:#8d9297;
     /* --post-color2:#111; */
     --post-color2:rgb(24 24 24);
     --blue:#2f80ed;
@@ -285,7 +285,7 @@ body.light{
     height: 50px;
     /* border-top: 1px solid var(--border-color2); */
     width: 100%;
-    z-index: 5;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -300,6 +300,7 @@ body.light{
     height: 50px;
     padding: 0px 10px;
     border-radius:20px;
+    box-shadow:0 0 0  .3px inset var(--border-color2);
     overflow: hidden;
 }
 body.light .bm-wrapper{
@@ -746,7 +747,7 @@ body.light .bm-wrapper{
 .viewer-details{
     width: 100%;
     /* border-bottom: 1px solid var(--border-color2); */
-    padding: 10px 20px;
+    padding: 0px 0px;
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -1004,4 +1005,7 @@ header.hidden{
 .sd-notification path{
     stroke-width: 0;
     fill: var(--text2);
+}
+.viewer-options{
+    width: 100%;
 }

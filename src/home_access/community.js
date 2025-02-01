@@ -20,7 +20,8 @@ const Community = () => {
                     signedCookies:JSON.stringify({
                         refreshToken: cook,
                         accessToken:cookies2
-                    })
+                    }),
+                    Ids:[]
                 })
                 const response=await request
                 console.log(response)

@@ -170,6 +170,7 @@ button.publish:disabled{
     display: flex;
     justify-content: end;
     gap: 10px;
+    z-index: 2;
     padding-top: 10px;
 }
 .pvi-ho{
@@ -179,5 +180,6 @@ button.publish:disabled{
     background-color:rgba(0,0,0,.5);
     display: flex;
     justify-content: center;
+    cursor: pointer;
     align-items: center;
 }

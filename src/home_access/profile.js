@@ -92,13 +92,6 @@ const Profile = () => {
   
   return (
     <div className='user_page_wrapper'>
-      <div className='bookmark_header sp-hd'>
-          <button>
-          <svg viewBox="0 0 24 24" fill="none" ><g  strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g> <path d="M11 6L5 12M5 12L11 18M5 12H19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
-          back
-          </button>
-          <h2><span></span>Profile</h2>
-        </div>
       <div className='profile_data'>
           <div className='profile_wrapper'>
             <div className='cover_image'>
@@ -133,12 +126,28 @@ const Profile = () => {
                 <p className='userName'>
                   <span>@{userAuth.user.username.toLowerCase()}</span>
                 </p>
+                <div className='user_e_dta'>
+                <div className='user_engaugement'>
+                  <div className='user-eng'>{userAuth.user.following.length} &nbsp;
+                    <p className='userName'>
+                      <span>Following</span>
+                    </p>
+
+                  </div>
+                  <div className='user-eng'>{userAuth.user.followers.length} &nbsp;
+                    <p className='userName'>
+                      <span>Followers</span>
+                    </p>
+                  </div>
+                  <div className='user-eng'>{userAuth.user.friends.length} &nbsp;
+                  <p className='userName'>
+                      <span>Friends</span>
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className='user_engaugement'>
-                <div className='user-eng'>{userAuth.user.following.length} Following</div>
-                <div className='user-eng'>{userAuth.user.followers.length} Followers</div>
-                <div className='user-eng'>{userAuth.user.friends.length} Friends</div>
               </div>
+              
               <div className='posts_profile'>
               <div className='filter_posts'>
                   <div className='filter_holder'>
