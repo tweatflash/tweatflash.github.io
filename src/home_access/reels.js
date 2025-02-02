@@ -11,32 +11,36 @@ const Reels = () => {
     const navigator=useNavigate()
     const [cou,setCou]=useState([])
     const [oo,setOO]=useState(true)
+    const [job,setJob] =useState([])
+      // const cookiep=useCookies()
+      let hdhdhdhdhdhdh=[]
     const count = 10;
     let count2 = 10
     let index = 0,
         index2=0
     
-    let job=[]
+    // let job=[]
     let jffjfjf=[]
     let hhh=[]
     const myDivRef = useRef(null);
     const fetchPosts=async ()=>{
+        // console.log(job)
         try {
             const request =await axios.post(`/posts/trends`,{
                 signedCookies:JSON.stringify({
                     refreshToken: cook,
                     accessToken:cookies2
                 }),
-                ids:job
+                Ids:hdhdhdhdhdhdh
             })
             const response=await request
-            console.log(response.data.posts)
+            // console.log(response.data.posts)
             if (response.data.posts.length){
                 count2 = response.data.posts.length
                 // console.log(count2, index2)
                 for (let i =0;  i<count2; i++){
                     hhh.push(response.data.posts[i])
-                   
+                    hdhdhdhdhdhdh.push(response.data.posts[i]._id)
                 }
                 // console.log(hhh)
                 setVid([...vid,...hhh])
@@ -106,7 +110,7 @@ const Reels = () => {
                 </div>
                     {
                         vid.map((item,index)=>(
-                           <Reallllllllll item={item} index={index}/>
+                           <Reallllllllll item={item} index={index} />
                         ))
                     }
                     <div id="loader" ref={myDivRef}>

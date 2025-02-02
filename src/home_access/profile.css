@@ -228,13 +228,19 @@
     background-color: var(--main-color2);
     
 }
+.f-psts{
+    color: var(--span2);
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
 @media screen and (max-width:550px){
     .profile_image{
         width: 90px;
         height: 90px;
         margin: auto;
         /* transform: translateX(0px); */
-        /* left:15px; */
+        /* left:15px; */    
         bottom: -45px;
     }
     /* .profile-details-data .profile-details{

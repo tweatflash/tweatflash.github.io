@@ -124,11 +124,14 @@ div#loader{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: var(--post-color2);
-    border:.5px solid var(--border-color2);
+    background-color:rgba(0,0,0,.5  );
+    border:.5px inset var(--border-color2);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.r-user-photo img{
+    /* background-color: red; */
 }
 .r-user-dtd{
     width: calc( 100% - 50px);
@@ -253,6 +256,18 @@ div#loader{
     position: absolute;
     bottom: 0px;
     left: 0px;
+}
+.r-un{
+    display: flex;
+}
+.r-un button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #4070f4;
+}
+.rl-tm{
+
 }
 @media screen and (max-height: 600px){
     .reels-holder{

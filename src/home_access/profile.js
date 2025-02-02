@@ -14,7 +14,8 @@ const Profile = () => {
   const [userPosts,setUserPosts] = useState([])
   const [pLoader,setPloader]=useState(true)
   const [np,SetNp]=useState([])
-
+  const [hro,setHro] =useState(false)
+  let gwghwhgwh=0
   let postRemain
   // console.log(userAuth)
   const postsRef =useRef(null)
@@ -27,23 +28,27 @@ const Profile = () => {
     console.log(np)
   },[np])
    const fetchPosts=async ()=>{
+    console.log(gwghwhgwh)
       try {
         const request =await axios.post(`/posts/user/${userAuth.user.username}`,{
           signedCookies:JSON.stringify({
             refreshToken: cook,
             accessToken:cookies2
           }),
-          skipCount:eval(counter + userPosts.length)
+          skipCount:gwghwhgwh
         })
         const response=await request
-        if(response.data){
+        console.log(response.data.posts )
+        if(!response.data.posts.length){
+          setHro(true)
           
-          // setUserPosts(response.data.posts)    
-          // console.log(response)  
+        }else{
+          setHro(false)
         }
         if(response.data.posts.length){
           
           counter = response.data.posts.length
+          gwghwhgwh =gwghwhgwh + counter
           for (let i =0;  i<counter; i++){
               newPosts.push(response.data.posts[i])
               
@@ -100,12 +105,12 @@ const Profile = () => {
                 <div className='profile_image'>
                   <div className='prf-img'>
                     {userAuth.user.profileImage ?  <AsyncImage
-                                                   
-                                                    src={userAuth.user.profileImage}
-                                                    Transition={Blur}
-                                                    style={{ width: "96%", height: "96%", borderRadius: "50%" }}
-                                                    loader={<div style={{ background: '#888' }} />}
-                                                />: <img style={ width <= 550 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>}
+                      
+                        src={userAuth.user.profileImage}
+                        Transition={Blur}
+                        style={{ width: "96%", height: "96%", borderRadius: "50%" }}
+                        loader={<div style={{ background: '#888' }} />}
+                    />: <img style={ width <= 550 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>}
                   </div>
                   
                 </div>
@@ -192,8 +197,8 @@ const Profile = () => {
                             userPosts.map((item,index)=>(<Feed item={item} index={index} type={"p"}/>))
                           }
                           <>
-                            {
-                               <div className='btm-ssf' id ="posts-rld" ref={postsRef}><div class="spinner-4"></div></div>
+                            { !hro ?
+                               <div className='btm-ssf' id ="posts-rld" ref={postsRef}><div class="spinner-4"></div></div> : <p className='userName f-psts'>No posts to display</p>
                             }
                           </>
                           <div className={`btm-nav-cvr ${width <=550 ? "av-und-spc" :""}`}></div>

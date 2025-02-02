@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import './explore.css'
 import AuthContext from '../context/authProvider'
 import axios from '../api/axios'
-
+import { Blur, Grow, Slide } from 'transitions-kit'
+import { AsyncImage } from 'loadable-image'
 const ExploreQ = () => {
     const [searchFocus,setSearchFocus] =useState(false)
+    const [exploreUsers,setExploreUsers] =useState([])
     const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,displayHeader,setDisplayHeader} =useContext(AuthContext)
     const searchFetch= async ()=>{
         try {
-            const request =await axios.post("/search/?md=@tweatflash",{
+            const request =await axios.post("/explore",{
                 signedCookies:JSON.stringify({
                     refreshToken: cook,
                     accessToken:cookies2
@@ -16,12 +18,13 @@ const ExploreQ = () => {
             })
             const response=await request
             console.log(response)
+            setExploreUsers(response.data.users)
         } catch (error) {
             console.log(error)
         }
     }
     useEffect(()=>{
-        // searchFetch()
+        searchFetch()
     },[])
     return (
         <div className='explore-page'>
@@ -54,7 +57,57 @@ const ExploreQ = () => {
                 </div>
             </div>
             </div>
-            
+            <div className='explore-cont'>
+                <div className='explore-wrpr'>
+                    <div className='explore-sections'>
+                        {
+                            exploreUsers.length ? 
+                            <div className='ex-sec-user'>
+                                <h2>Who to follow</h2>
+                                <div className='usersfl-container'>
+                                    <div className='ex-us-c'>
+                                        {
+                                        
+                                            exploreUsers.map(item=>(
+                                                <div className='ex-users'>
+                                                    <div className='ex-usr-phto'>
+                                                        <AsyncImage
+                                                            key={1}
+                                                            src={item.profileImage}
+                                                            Transition={Blur}
+                                                            style={{ width: "100%", height: "100%", borderRadius: 50 }}
+                                                            loader={<div style={{ background: '#888' }} />}
+                                                        />
+                                                    </div>
+                                                    <div className='ex-user-mre-data'>
+                                                    
+                                                        <div className='ex-user-desc'>
+                                                                <p className='post-name'>{item.name}</p>
+                                                                <p className='userName'>
+                                                                    <span className='userName'>
+                                                                        @groeubfi 
+                                                                    </span>
+                                                                </p>
+                                                        </div>
+                                                        <button>
+                                                            Follow
+                                                        </button>
+                                                </div>
+                                                </div>
+                                            ))
+                                            
+                                        }
+                                        <div>
+                                            
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div> :
+                            <></>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
