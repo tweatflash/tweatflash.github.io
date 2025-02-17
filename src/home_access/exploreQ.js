@@ -4,13 +4,21 @@ import AuthContext from '../context/authProvider'
 import axios from '../api/axios'
 import { Blur, Grow, Slide } from 'transitions-kit'
 import { AsyncImage } from 'loadable-image'
+import Access_Loader from '../loading_component/access_loader'
+import Feed from './feed'
 const ExploreQ = () => {
     const [searchFocus,setSearchFocus] =useState(false)
+    const [pageInit,setPageInit] =useState(true)
     const [exploreUsers,setExploreUsers] =useState([])
-    const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr,setCook,setCookies2, setAllowCookies,displayHeader,setDisplayHeader} =useContext(AuthContext)
+    const [explorePosts,setExplorePosts] =useState([])
+    const [message,setMessage] =useState("")
+    const [a,setA] =useState([])
+    const [b,setB] =useState([])
+
+    const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr} =useContext(AuthContext)
     const searchFetch= async ()=>{
         try {
-            const request =await axios.post("/explore",{
+            const request =await axios.post(`/search/?md=${message}`,{
                 signedCookies:JSON.stringify({
                     refreshToken: cook,
                     accessToken:cookies2
@@ -18,14 +26,50 @@ const ExploreQ = () => {
             })
             const response=await request
             console.log(response)
-            setExploreUsers(response.data.users)
+            setPageInit(false)
+            // setExploreUsers(response.data.users)
+            setExplorePosts(response.data.posts)
         } catch (error) {
             console.log(error)
+            setBooleanErrHome(true)
+            setHomeErr(`${error}`)
+        }
+    }
+    const exploreFetch= async ()=>{
+        try {
+            const request =await axios.post(`/explore`,{
+                signedCookies:JSON.stringify({
+                    refreshToken: cook,
+                    accessToken:cookies2
+                })
+            })
+            const response=await request
+            console.log(response)
+            setPageInit(false)
+            setA(response.data.users)
+            setB(response.data.posts)
+            setExplorePosts(response.data.posts)
+        } catch (error) {
+            console.log(error)
+            setBooleanErrHome(true)
+            setHomeErr(`${error}`)
         }
     }
     useEffect(()=>{
-        searchFetch()
+        exploreFetch()
     },[])
+    useEffect(()=>{
+      
+    },[a,b])
+    useEffect(()=>{
+        if (message.length){
+            setPageInit(true)
+            searchFetch()
+        }else{
+            setExplorePosts([...b])
+        }
+    
+    },[message])
     return (
         <div className='explore-page'>
             <div className='bookmark_header sp-hd explore-header-i'>
@@ -36,6 +80,8 @@ const ExploreQ = () => {
                             <input 
                                 type='text'
                                 placeholder='Search anything'
+                                value={message}
+                                onChange={(e)=>setMessage(e.target.value)}
                                 onBlur={(e)=> setSearchFocus(false)}
                                 onFocus={(e)=>setSearchFocus(true)}
                             />
@@ -56,19 +102,20 @@ const ExploreQ = () => {
                     
                 </div>
             </div>
+           
             </div>
             <div className='explore-cont'>
                 <div className='explore-wrpr'>
-                    <div className='explore-sections'>
+                    {pageInit ?<Access_Loader/>:<div className='explore-sections'>
                         {
                             exploreUsers.length ? 
                             <div className='ex-sec-user'>
-                                <h2>Who to follow</h2>
+                                <h2 className='list-title'>Who to follow</h2>
                                 <div className='usersfl-container'>
                                     <div className='ex-us-c'>
                                         {
                                         
-                                            exploreUsers.map(item=>(
+                                            exploreUsers.slice(0,5).map(item=>(
                                                 <div className='ex-users'>
                                                     <div className='ex-usr-phto'>
                                                         <AsyncImage
@@ -85,7 +132,7 @@ const ExploreQ = () => {
                                                                 <p className='post-name'>{item.name}</p>
                                                                 <p className='userName'>
                                                                     <span className='userName'>
-                                                                        @groeubfi 
+                                                                        @{item.username}
                                                                     </span>
                                                                 </p>
                                                         </div>
@@ -97,15 +144,33 @@ const ExploreQ = () => {
                                             ))
                                             
                                         }
-                                        <div>
-                                            
+                                        <div className='sm-cnt'> 
+                                            <div className='s-mr'> see more</div>
                                         </div>
                                     </div>
                                 </div> 
                             </div> :
                             <></>
                         }
+                        {
+                            explorePosts.length ?  <div className='posts-container'>
+                                <h2 className='list-title post-list-title'>Posts for you</h2>
+                            <div className='posts-wrapper'>
+                            
+                              <div className='post-list'>
+                                <div className='posts-order-wrapper'>
+                                    {
+                                        explorePosts.map((item,index) =>(<Feed item={item} index={index}/> )) 
+                                    }
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            :<></>
+                        }
                     </div>
+                        
+                    }
                 </div>
             </div>
         </div>

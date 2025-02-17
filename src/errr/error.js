@@ -3,7 +3,6 @@ import { Navigate, useParams } from 'react-router-dom'
 
 const Error = () => {
   const data= useParams()
-  console.log(data)
   return (
     <h1>
       customkized 404

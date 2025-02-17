@@ -3,6 +3,12 @@
     position: relative;
     height: fit-content;
 }
+.post-header{
+    position: sticky;
+    top: 0px;
+    height: 50px !important;
+    border-bottom: .5px inset var(--border-color2);
+}
 .posts-wrapper{
     padding: 0px;
     display: flex;
@@ -215,7 +221,7 @@ body.light .psts_text{
 .svg-wrpr{
     /* width:20% ; */
     /* border: 1px solid var(--border-color2); */
-    padding: 6.5px 10px;
+    padding: 7.5px 10px;
     /* border-radius: 10px; */
     font-size: small;
     /* background-color: var(--post-color2); */
@@ -225,6 +231,9 @@ body.light .psts_text{
     align-items: center;
     background-position: center;
     transition: background 0.8s;
+}
+.svg-wrpr span{
+    font-size: 12px;
 }
 .svg-wrpr:first-child {
     padding-left: 15px;
@@ -372,14 +381,14 @@ svg.fill{
     /* border: 1px solid var(--border-color2); */
     margin: 10px 0px 5px 0px;
     /* background-color: var(--main-color2); */
-    padding-top: 10px;
+    padding: 10px 5px 0px;
     /* border-top: 1px solid var(--border-color2);   */
 
 }
 
 .comments_wrapper{
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-wrap: nowrap;
 }
@@ -467,8 +476,8 @@ svg.fill{
 }
 .comments-container{
     width: 100%;
-    padding: 15px;
-    padding-bottom: 70px;
+    padding: 10px;
+    /* padding-bottom: 70px; */
 
 }
 .comments-wrapper{
@@ -555,7 +564,7 @@ svg.fill{
     width: 100%;    
 }
 .posts-container{
-    min-height: 100vh;
+    min-height: ;
     height: auto;
     position: relative;
 }
@@ -651,16 +660,24 @@ svg.fill{
     width: 25px;
 }
 .more-psts-option{
-    width: 200px;
-    height: 300px;
+    width: 240px;
+    height: auto;
     position: absolute;
-    background-color: var(--post-color2);
+    background-color: var(--main-color2);
     border: .5px solid var(--border-color2);
     border-radius: 15px ;
     right: 10px;
     top: 50px;
-    z-index: 10;
-    display: none;
+    z-index: 13;
+    opacity: 0;
+    visibility: hidden;
+    /* display: none; */
+    box-shadow: 0 10.5px 21px rgba(0,0,0,.08);
+    transition: .3s;
+}
+.more-psts-option.active{
+    visibility: visible;
+    opacity: 1;
 }
 .like_btn.liked svg{
     fill: #f4144c;
@@ -835,4 +852,42 @@ body:has(.comment-wrapper.active){
 
 .posts-container header {
     border-bottom: 0.3px solid var(--border-color2);
+}
+.feed-list-wrapper , .feed-list{
+    width: 100%;
+    height: auto;
+}
+.feed-list{
+    
+    padding: 5px 10px;
+    /* margin-bottom: 10px; */
+}
+.feed-list-item{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 12px;
+    margin: 7px 0px;
+    border-radius: 10px;
+    /* background-color: var(--post-color2); */
+    font-size: 15px;
+   
+
+}
+.feed-list-item div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.feed-list-item:hover{
+    background-color: var(--post-color2);
+}
+.fdl-2{
+    border-bottom: .5px solid var(--border-color2);
+    border-top: .5px solid var(--border-color2);
+}
+.overflow-txt{
+    
 }

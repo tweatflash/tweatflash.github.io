@@ -23,10 +23,14 @@ export const AuthProvider= ({children})=>{
     const [allowCookies,setAllowCookies]=useState(false)
     const [sidenav,setSideNav]=useState(false)
     const [viewhd,setViewhd]=useState(true)
-    const [imgUrl,setImgUrl]=useState("")
+    const [imgUrl,setImgUrl]=useState([])
     const [fnp,setFnp] =useState(true)
     const [uploadPost,setUploadPost] =useState(false)
+    const [focusMagic,setFocusMagic] =useState(false)
     const [im,setIm]=useState(false)
+    const [commentsPrawler,setCommentsPrawler] =useState([])
+    const [showComments,setShowComments] =useState(false)
+    const [postId,setPostId]=useState("")
     const cookies = new Cookies();
     let counter = 0
     let indexing = 0
@@ -216,7 +220,15 @@ export const AuthProvider= ({children})=>{
               imgUrl,
               setImgUrl,
               im,
-              setIm
+              setIm,
+              focusMagic,
+              setFocusMagic,
+              commentsPrawler,
+              setCommentsPrawler,
+              showComments,
+              setShowComments,
+              postId,
+              setPostId
             }
           }>
             {children}

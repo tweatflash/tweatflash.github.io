@@ -72,7 +72,7 @@ const Main_App = () => {
                         {
                             auth ?  <Route path=":user" element={<GetOtherProfile/>}>
                             {/* <Route path="" element={<Explore/>}> */}
-                                <Route index element={<OtherProfile otherProfile={otherProfile} />}/>
+                                <Route index element={<OtherProfile path=":user"/>}/>
                                 <Route path='status/:postId' element={<SinglePosts/>}>  
                                 
                                 {/* </Route> */}
@@ -88,8 +88,8 @@ const Main_App = () => {
                 
                 {/* catch all path */}
                 <Route path=":user">
-                    <Route path="" element={<Explore/>}>
-                        <Route index element={<OtherProfile otherProfile={otherProfile} />}/>
+                    <Route element={<Explore/>}>
+                        <Route index element={<OtherProfile />}/>
                         <Route path='status/:postId' element={<SinglePosts/>}>  
                         
                         </Route>

@@ -39,8 +39,7 @@ const Explore = () => {
   useEffect(()=>{
     fetchPosts()
   },[])
-  return (<>
-    {userAuth? 
+  return (<> 
     <>
       <div className='main_data_extractor grip'>
             <div className='container_size'>
@@ -78,8 +77,6 @@ const Explore = () => {
             </div>
         </div>
     </>
-    :<Error/>
-    }
   </>)
 }
 

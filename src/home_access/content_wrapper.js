@@ -78,11 +78,11 @@ const Content_wrapper = ({item,index,im,setIm,setImgUrl}) => {
             {
                totalLen ===1? <> 
                  { 
-                     (!item.video  instanceof Array && item.video)  || (item.video instanceof Array && item.video.length) ? <video className='blog-video' id={`video-post-${index}`} src={item.video instanceof Array? item.video[0] : item.video} onClick={()=>toggleVideo(`video-post-${index}`)}/> : ((item.img instanceof Array && item.img.length) ? <div className='posts-img' ><img src={item.img[0]} onClick={(e)=>{
+                    (!item.video  instanceof Array && item.video)  || (item.video instanceof Array && item.video.length) ? <video  className='blog-video' id={`video-post-${item._id}`} src={item.video instanceof Array? item.video[0] : item.video} onClick={()=>toggleVideo(`video-post-${item._id}`)}/> : ((item.img instanceof Array && item.img.length) ? <div className='posts-img' ><img src={item.img[0]} onClick={(e)=>{
                         setImgUrl(item.img[0])
                         setIm(true)
-                     } }/></div> :<div className='posts-img' ><img src={item.img} onClick={(e)=>{
-                        setImgUrl(item.img)
+                    } }/></div> :<div className='posts-img' ><img src={item.img} onClick={(e)=>{
+                        setImgUrl([item.img])
                         setIm(true)
                      } }/></div>)
                     
@@ -94,14 +94,18 @@ const Content_wrapper = ({item,index,im,setIm,setImgUrl}) => {
                  totalLen>1 ? <div className='content-image-video '>
                  <div className='civ-wrapper '>
                      <div className={`civ-list ${selectedFiles.length===3 ? "g-clm-3" :""}`}>
-                         {selectedFiles.map((file)=>(
+                         {selectedFiles.slice(0,4).map((file ,index)=>(
                              <div className='civ-data'>
                     
                                  {file.type ==='img' ? <img src={file.src} tabIndex={2} onClick={(e)=>{
                                     setImgUrl(file.src)         
                                     setIm(true)
                                  } }/> :<video  src={file.src}/>}
+                                 {totalLen >4 && index==3? <div className='overflow-txt'>
+                                    <p>+{eval( totalLen - 4)}</p>
+                                 </div> :<></>}
                              </div>
+                           
                          ))}
                      </div>
                  </div>

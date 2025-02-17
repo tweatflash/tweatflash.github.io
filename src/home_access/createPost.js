@@ -20,7 +20,7 @@ const CreatePosts = () => {
     const [eachObjext,setEachObjext] =useState([])
     const [displayObject,setDisplayObject] =useState([])
     const [selectedFiles, setSelectedFiles] = useState([]);
-
+    
     
     let formData
     // 

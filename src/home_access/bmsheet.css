@@ -1,0 +1,491 @@
+
+.comments-showup{
+    width: 100%;
+    background-color: transparent;
+    height: 100vh;
+
+}
+.bottom-sticker{
+    width: 100%;
+    background-color: red;
+    height: 40px;
+    position: sticky;
+    top: 90vh;
+}
+.bottom-sheet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    z-index: 30;
+    pointer-events: none;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: 0.3s linear;
+    background-color: rgba(0,0,0,0.5);
+
+  }
+  .bottom-sheet.show {
+    opacity: 1;
+    pointer-events: auto;
+    
+  }
+  .bottom-sheet .sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* opacity: 0.4; */
+  }
+  .bottom-sheet .content {
+    width: 100%;
+    position: relative;
+    backdrop-filter: blur(20px);
+    background:var(--main-color2);
+    /* border: 1.5px solid rgba(225,225,225,.1); */
+    max-height: 100vh;
+    height: 50vh;
+    max-width: 500px;
+    padding:15px 0px 0px 15px;
+    transform: translateY(100%);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    transition: 0.3s ease;
+  }
+  .bottom-sheet.show .content{
+    transform: translateY(0%);
+  }
+  .bottom-sheet.dragging .content {
+    transition: none;
+  }
+  .bottom-sheet.fullscreen .content {
+    border-radius: 0;
+    overflow-y: hidden;
+  }
+  .bottom-sheet .header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-right: 15px;
+  }
+.bottom-sheet .header .close-icon{
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-color2);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text2);
+    right: 0px;
+}
+.bottom-sheet .header .open-down{
+    transform: rotate(180deg);
+}
+.bottom-sheet .close-icon:hover{
+    background-color: var(--post-color2);
+}
+  .header .drag-icon {
+    cursor: grab;
+    user-select: none;
+    padding: 15px;
+    margin-top: -15px;
+  }
+  .header .drag-icon span {
+    height: 4px;
+    width: 40px;
+    display: block;
+    background: #C7D0E1;
+    border-radius: 50px;
+  }
+  .bottom-sheet .body {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .bottom-sheet .body::-webkit-scrollbar {
+    width: 0;
+  }
+
+.bottom-sheet .prompt-title p{
+    color: var(--text2);
+    font-size: 1.2em;
+    text-align: center;
+}
+.bottom-sheet .prompt-title{
+    /* padding-bottom: 20px; */
+    height: 35px;
+    padding-right: 15px;
+    /* padding-bottom: 10px; */
+}
+.bottom-sheet .prompt-content{
+    width: 100%;
+    height: calc(100% - 60px);
+    display: flex;
+    overflow-y: scroll;
+}
+.prompt-content::-webkit-scrollbar{
+    display: none;
+}
+.bottom-sheet .prompt-footer{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    padding: 10px 12.5px 0px;
+    background-color: var(--main-color2);
+    bottom: 0px;
+    border-top: .3px inset var(--border-color2);
+}
+.prompt-footer .footer-content{
+    width: 100%;
+    height: 100%;
+
+}
+.footer-content .add-comment{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-comment .cm-img-hnd{
+    height: 100%;
+    width: 40px;
+    border-radius: 50%;
+    /* background-image: url(profile.svg); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: 120%;
+    padding: 10px 0px;
+}
+.cm-img-hnd img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.add-comment .input{
+    width: calc(100% - 45px);
+    height: 100%;
+    position: relative;
+    padding-bottom: 10px;
+}
+.add-comment input[type='text']{
+    width: calc(100% );
+    position: absolute;
+    height: calc( 100% - 20px);
+    bottom: 10px;
+    padding: 0px 15px;
+    border: none;
+    background-color: var(--post-color2);
+    border: .1px solid var(--border-color2);
+    color: var(--text2);
+    border-radius: 10px;
+    outline:  none;
+}
+.prompt-content ul{
+    width: 100%;
+    height: fit-content;
+}
+.prompt-content ul li{
+    width: 100%;
+    height: auto;
+    /* background-color: var(--post-color2); */
+    border-radius: 10px;
+    /* border: 1.5px solid var(--border-color2); */
+    margin: 10px 0px;
+}
+.prompt-content li .comment{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+.comment .profile{
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    background-position: center;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    border: .5px inset var(--border-color2);
+}
+.main-comments-user-d{
+    width: calc(100% - 50px);
+    height: auto;
+}
+.comment .comment-text{
+    width: fit-content;
+    position: relative;
+    background-color: var(--post-color2);
+    border: .5px inset var(--border-color2);
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.comment-text .reactions{
+    position: absolute;
+    width: 200px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: var(--main-color2);
+    border: 1px solid var(--border-color2);
+    right: 10px;
+    bottom: -15px;
+}
+.comment-text span{
+    color: var(--text2);
+    /* padding: 5px 0px; */
+    margin-bottom: 5px;
+    font-size: .8em;
+    font-weight:bold;
+    display: block;
+}
+.comment-text p{
+    color: var(--span2);
+    font-size: .9em;
+    /* padding: 15px; */
+    /* border: 1px solid var(--border-color2); */
+    /* background-color: var(--post-color2); */
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+}
+.us-cmt-opt{
+    padding: 7.5px;
+    display: flex;
+    justify-content: space-between;
+}
+.cmt-opt-like{
+    padding-left: 10px;
+}
+.us-cmt-opt .cmt-opts{
+    display: flex;
+    gap: 20px;
+}
+.cmt-opts p{
+    color: var(--span2);
+}
+.p-pr-dp{
+    width: 100%;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2f80ed;
+
+}
+.comments-action{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.cmtr-photo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* padding: 1px; */
+    border: .4px inset var(--border-color2);
+}
+.cmtr-photo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;  
+    object-fit: cover;
+    object-position: center;
+}
+.cmtr-input{
+    width: calc( 100% - 40px);
+    height: 100%;
+    padding-left: 10px;
+}
+.cmtr-i-cn{
+    width: 100%;
+    height: auto;
+    background-color: var(--post-color2);
+    border-radius: 10px;
+    border: .2px inset var(--border-color2);
+}
+.comments-text{
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    
+    padding: 10px;
+    max-height: 80px;
+    outline: none;
+    color: var(--text2);
+    background-color: var(--main-color2);
+    border-radius: 10px 10px 0px 0px;
+    font-size: small;
+}
+.comments-text::-webkit-scrollbar{
+    display: none;
+}
+.cmt-reply-container ,.reply-wrp ,.rpy-header ,.rply-body{
+    width: 100%;
+    
+}
+.reply-wrp{
+    border-radius: 15px;
+    width: fit-content;
+    padding: 10px;
+    background-color: var(--post-color2);
+    margin-bottom: 10px;
+}
+.rpy-header{
+    display: flex;
+    justify-content: space-between;
+}
+.rpy-photo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: antiquewhite;
+}
+.rply-phld{
+    width: calc( 100% - 30px);
+    padding-left: 10px;
+}
+.rply-phld .rply-nm{
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+}
+.rply-body .rply-snap-txt{
+    color: var(--span2);
+    font-size: 14px;
+}
+.more-replies a{
+    color: var(--text2);
+    font-weight: 300;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+.img-cmt-hldr{
+    width: 100%;
+    height: auto;
+    
+    padding: 10px 0px;
+}
+.cmt-img{
+    max-width: 100%;
+    width: auto;
+    max-height: 250px;
+    border-radius: 15px;
+}
+.cmt-img img{
+    max-width: 100%;
+    width: auto;
+    max-height: 250px;
+    border-radius: inherit;
+    background: transparent;
+    border: 1px inset var(--border-color2);
+    margin: auto;
+}
+.comments-option{
+    width: 100%;
+    height: 40px;
+    border-top: .2px inset var(--border-color2);
+}
+.prompt-content .comments-handler-wrppr{
+    height: 100%;
+    overflow-y: scroll;
+}
+.cmtr-upld-opt{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 0px;
+    height: 100%;
+    padding: 5px 10px;
+}
+.upld-opt{
+    height: 100%;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--border-color2) ;
+    padding: 5px;
+    position: relative;
+}
+.upld-opt svg{
+    width: 100%;
+    stroke: var(--span2);
+    height: 100%;
+}
+.upld-opts{
+    height: 100%;
+    display: flex;
+    gap: 10px;
+}
+.images-uploaded{
+    height: 140px;
+    width: 100%;
+    /* background-color: red; */
+    padding-bottom: 10px;
+}
+.img-cmtr-hld{
+    height: 100%;
+    width: 100px;
+    background-color: var(--post-color2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    border: .5px inset var(--border-color2);
+}
+.img-cnc{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px;
+    
+}
+.img-cmtr-hld img,.img-cmtr-hld video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    object-fit: cover;
+      object-position: center;
+}
+.footer-content input[type="file"]{
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.img-cnc svg{
+    width: 100%;
+    height: 100%;
+}
+.upld-opt label{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    left: 0px;
+    top: 0px;
+}
+@media screen and (max-width:500px) {
+    .bottom-sheet .content{
+        padding: 15px 0px 0px 15px ;
+    }
+
+}
+@media screen and (max-width:425px) {
+    .bottom-sheet .content{
+        /* padding: 10px 10px 0px; */
+    }
+
+}

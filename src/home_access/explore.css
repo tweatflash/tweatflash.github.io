@@ -6,6 +6,7 @@
     border-bottom: .5px solid var(--border-color2);
     backdrop-filter: blur(20px);
     padding: 0px;
+    position: sticky;
 }
 .bookmark_header{
     height: fit-content;
@@ -129,4 +130,27 @@
     border:none;
     border-radius: 20px;
     outline: none;
+}
+.list-title{
+    font-size: 17px;
+}
+.sm-cnt{
+    width:100%;
+    padding: 10px 0px;
+}
+.post-list-title{
+    padding-left: 15px;
+}
+.e-sh-result{
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    height: 300px;
+    background-color: red;
+}
+@media screen and (max-width:550px) {
+    .e-sh-result{
+        position: fixed;
+        height: 100vh;  
+    }
 }

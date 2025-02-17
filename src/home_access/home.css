@@ -773,7 +773,7 @@ body.light .bm-wrapper{
     display: flex;
     align-items: center;
 }
-body:has(.photo_viewer.active) ,body:has(.css083yewe.collapse){
+body:has(.photo_viewer.active) ,body:has(.css083yewe.collapse) ,body:has(.bottom-sheet.show){
     overflow-y: hidden;
 }
 .viewer-options{
@@ -1008,4 +1008,12 @@ header.hidden{
 }
 .viewer-options{
     width: 100%;
+}
+.f-mg{
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    height: 100vh;
+    z-index: 12;
+    background-color: transparent;
 }

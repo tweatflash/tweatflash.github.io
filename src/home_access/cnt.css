@@ -26,7 +26,21 @@
   background-color: var(--post-color2);
   overflow: hidden;
   display: flex;
+  position: relative;
   /* border: .5px solid var(--border-color2); */
+}
+.civ-data .overflow-txt{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.5);
+}
+.overflow-txt p{
+  color: #fff;
+  font-size: 18px;
 }
 .civ-data img , .civ-data video{
   object-fit: cover;  

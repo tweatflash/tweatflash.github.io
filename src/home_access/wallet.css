@@ -1,0 +1,135 @@
+.wallet-page{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+}
+.wallet-page svg{
+    fill: var(--text2);
+    height: 100%;
+    width: 40px;
+}
+.wallet-page h1{
+    display: flex;
+    align-items: center;
+    font-family: font;
+    font-weight: bolder;
+}
+.wallet-holder{
+    width: 100%;
+    padding-top: 20px;
+}
+.w-wb{
+
+}
+.wb-text{
+    color: var(--span2);
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+.wallet-page h1{
+    display: flex;
+    align-items: center;
+}
+.wallet-holder{
+    width: 100%;
+    padding-top: 20px;
+}
+.w-wb{
+
+}
+.wb-text{
+    color: var(--span2);
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+.mw-wb{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+}
+.mw-wb svg{
+    height: 50px;
+    width: 50px;
+}
+.mw-wb h1{
+    font-size: 50px;
+    color: var(--text2);
+}
+.wallet-options{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 20px;
+    height: 55px;
+}
+.wallet-options button{
+    padding: 0px 25px;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: #2f80ed;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.nx-wlt-opt{
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border-top: .3px solid var(--border-color2);
+}
+.wlt-opt-wrapper{
+    width: 100%;
+    height: auto;
+
+}
+.wlt-list{
+    width: 100%;
+    height: ;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--post-color2);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.wl-list-lgo{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: orangered;
+}
+.wl-list-lgo2{
+    border-radius: 10px;
+    background-color: var(--border-color2);
+}
+.m-wl-lst{
+    width: calc(100% - 40px);
+    padding-left: 10px;
+}
+.m-wl-lst .m-wl-op{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.m-wl-op p{
+    color: var(--text2);
+}
+.m-wl-op.main p{
+    font-weight: bold;
+}
+.m-wl-op.main{
+    height: auto;
+    margin-bottom: 10px;
+}
+.m-wl-op.value p{ 
+    color: var(--span2);
+}
+.m-wl-op.menu{
+    align-items: center;
+    height: 100%;
+    
+}
