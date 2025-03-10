@@ -9,16 +9,20 @@ import axios from '../api/axios'
 import Header from './header'
 import Feed from './feed'
 import { AsyncImage } from 'loadable-image'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { forYouPostadded, selectAllPosts } from './forYouPostsSlice'
 // import useCookies from '../hooks/useCookies'
 // 
 const Posts = () => {
+  const forYouPost=useSelector(selectAllPosts)
   const {width}=useWindowSize()
   const HeaderRef=useRef(null)
+  const dispatch=useDispatch()
   const postsRef =useRef(null)
   const [comments, setComments] =useState(false)
   const [stories,setStories] =useState([])
   const [job,setJob] =useState([])
+  const [generalPosts,setGeneralPosts] =useState([])
   // const cookiep=useCookies()
   const [you ,setYou] =useState([])
   let hdhdhdhdhdhdh=[]
@@ -60,9 +64,14 @@ const Posts = () => {
             // })k
           }
             
-          console.error(newPosts)
-          setJob([...job,...hdhdhdhdhdhdh])
-          setDisplayHeader([...displayHeader, ...newPosts]);
+          // console.error(newPosts)
+          // setJob([...job,...hdhdhdhdhdhdh])
+          // setDisplayHeader([...displayHeader, ...newPosts]);
+          // setGeneralPosts([...generalPosts, ...displayHeader])
+          // dispatch(
+          //   forYouPostadded(newPosts)
+             
+          // )
           // newPosts=[]
           indexing = indexing+ counter
   
@@ -91,7 +100,7 @@ const Posts = () => {
       })
       const response=await request
 
-      console.log(response)
+      // console.log(response)
       setStories(response.data)
     } catch (error) {
       console.log(error)
@@ -108,7 +117,7 @@ const Posts = () => {
       });
     });
     useEffect(()=>{
-      console.log(job)
+      // console.log(job)
     },[job])
    useEffect(()=>{
       if (postsRef.current) { 
@@ -125,16 +134,16 @@ const Posts = () => {
     var poll = setInterval(function () {
         if (img.naturalWidth) {
             clearInterval(poll);
-            console.log(img.naturalWidth, img.naturalHeight);
+            // console.log(img.naturalWidth, img.naturalHeight);
         }
     }, 10);
 
-    img.onload = function () { console.log('Fully loaded'); }
+    // img.onload = function () { console.log('Fully loaded'); }
   return (
     <div className='posts-container'>
-      <div className='bookmark_header post-header' >
-                
-      </div>
+      {/* <div className='bookmark_header post-header' > */}
+                <Header generalPosts={generalPosts} setGeneralPosts={setGeneralPosts}/>
+      {/* </div> */}
       <>
           {stories.length?<div className='status'>
             <div className='status-options'>
@@ -183,9 +192,9 @@ const Posts = () => {
        
         <div className='post-list'>
         
-        {displayHeader ? 
+        {generalPosts ? 
           <div className='posts-order-wrapper'> 
-            {displayHeader.map((item,index)=>(<Feed item={item } index={index} type={"p"} setComments={setComments}/>))}                                                                                                                                                                                                                                                                                                                                                                 
+            {generalPosts.map((item,index)=>(<Feed item={item } index={index} type={"p"} setComments={setComments}/>))}                                                                                                                                                                                                                                                                                                                                                                 
             <div className='btm-ssf' id ="posts-rld" ref={postsRef}>
               <div class="spinner-4"></div>
             </div>

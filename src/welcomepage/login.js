@@ -11,7 +11,7 @@ const Login = () => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const loaderLine=document.querySelector(".loader-line")
     const append_direction=document.querySelector(".more-content-layout")
-    const {auth ,setAuth, setSignupModal, setErr ,setPrawler ,setCook ,setCookies2,setAllowCookies}=useContext(AuthContext)
+    const {auth ,setAuth, setSignupModal,signupModal, setErr ,setPrawler ,setCook ,setCookies2,setAllowCookies}=useContext(AuthContext)
     const [email, setEmail] = useState('');
     const [validEmail, setValidEmail] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
@@ -27,7 +27,7 @@ const Login = () => {
     useEffect(()=>{
       setSignupModal(true)
       
-    },[])
+    },[signupModal])
     useEffect(() => {
       if (email.length){
         setValidEmail(true)
@@ -219,7 +219,7 @@ const lets_go_login=async ()=>{
               </div>
              
               <button className="btn-btn1 btn-blue" disabled={!password} onClick={lets_go_login}type="submit">Login</button>
-          <Link to={"/"}>Don't have an account?</Link>
+          <Link to={"/"}>Forgot password?</Link>
          </form>
     </div>
     )}

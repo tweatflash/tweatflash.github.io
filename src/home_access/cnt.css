@@ -4,6 +4,7 @@
   /* background-color: red; */
   border-radius: 15px;
   overflow: hidden;
+  
   border: .5px solid var(--border-color2);
 }
 .civ-wrapper,.civ-list{
@@ -14,16 +15,17 @@
 .civ-list{
   display: grid;
   grid-template-columns: repeat(2 , 1fr);
-  gap: .2em;
-
+  gap: .2rem;
+  background-color: transparent;
   height: 100% !important;
+  /* background:inset var(--main-color2);  */
 }
 .g-clm-3 .civ-data:first-child{
   grid-row-start: 1;
   grid-row-end: span 2;
 }
 .civ-data{
-  background-color: var(--post-color2);
+  background-color: var(--main-color2);
   overflow: hidden;
   display: flex;
   position: relative;

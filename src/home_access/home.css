@@ -15,8 +15,10 @@
     --blue:#2f80ed;
     --icon-color:#2f80ed;
     --default_font_size:14px;
+    --svg-color:#cccccc;
     /* --post-color2:#f9f9F9; */
 }
+
 body{
     /* background-image: none; */
 }
@@ -25,11 +27,12 @@ body{
 }
 body.light{
     --main-color2:#ffffff;
-    --border-color2:rgb(213,213,213); 
-    --post-color2:rgb(239, 243, 244);
+    --border-color2:rgba(22, 24, 35, 0.12); 
+    --post-color2:#f2f2f2;
     --text2:#000;
     --icon-color:#000;
     --span2:#222;
+    --svg-color:#424242;
 }
 .main_data_extractor{
     width: 100%;
@@ -191,6 +194,7 @@ body.light{
 }
 .css_svg{
     color: var(--text2);
+    
 }
 .css_svg{
     fill:none;
@@ -212,6 +216,10 @@ body.light{
 }
 .css007-sw g{
     stroke-width: 100px;
+    
+}
+.css_svg.css007-sw{
+    fill: var(--text2);
 }
 .links-svg{
     height: 100%;
@@ -228,18 +236,17 @@ body.light{
 }
 .css007-shm g{
     stroke-width: 100px;
-    fill: linear-gradient(red,blue);
 }
 .css007-ssh{
    fill: none;
 }
 .css007-smg{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 .css007-smg g{
-    stroke-width: 2;
-    stroke:var(--text2);
+    stroke-width: 0;
+    fill:var(--text2);
 }
 .add-plus-shit  {
     stroke :var(--text2);
@@ -299,9 +306,30 @@ body.light{
     max-width: 400px;
     height: 50px;
     padding: 0px 10px;
+    position: relative;
     border-radius:20px;
-    box-shadow:0 0 0  .3px inset var(--border-color2);
+    box-shadow:0 0 0  .5px inset var(--border-color2);
     overflow: hidden;
+}
+@media screen and (max-width:450px) {
+    .bm-wrapper{
+        max-width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+    }
+    .bm-wrapper::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        top: 0px;
+        height: 1px;
+        box-shadow:0 0 0  .5px inset var(--border-color2);
+        left: 0px;
+    }
+    .mobile-nav{
+        padding: 0px;
+        bottom: 0px;
+    }
 }
 body.light .bm-wrapper{
     background-color: rgba(225, 225, 225, .6);
@@ -360,7 +388,6 @@ body.light .bm-wrapper{
     max-width: 1200px;
     width: 100%;
     height: 50px;
-    border-bottom: 0px solid var(--border-color2);      
     padding:0px 15px;
     display: flex;
     align-items: center;
@@ -371,7 +398,7 @@ body.light .bm-wrapper{
 .main_data_extractor header .m-logo{
     /* width: fit-content; */
     height: 70%;
-    border: 1px solid var(--border-color2);
+    box-shadow:0 0 0  .5px inset var(--border-color2);
     width: 100%;
     border-radius: 50px;
     padding:5px  7.5px ;
@@ -507,8 +534,8 @@ body.light .bm-wrapper{
     stroke: var(--text2);
 }
 .css007-psn g{
-    stroke-width: 1;
-    fill: #fff;
+    stroke-width: 0;
+    fill: var(--text2);
 
     stroke: none;
 }
@@ -559,7 +586,7 @@ body.light .bm-wrapper{
     padding: 0px 15px;
     border-radius: 20px;
     width: fit-content;
-    border: 1px solid var(--border-color2);
+    /* border: 1px solid var(--border-color2); */
     background-color: var(--post-color2);
     background-position: center;
     transition: background 0.8s;
@@ -627,7 +654,7 @@ body.light .bm-wrapper{
 }
 .bookmark_header{
     display: flex;
-    border-bottom: 1=px solid var(--border-color2);
+    border-bottom: 1px solid var(--border-color2);
     padding: 10px;
     height: 51px;
     /* justify-content: space-between; */
@@ -773,7 +800,7 @@ body.light .bm-wrapper{
     display: flex;
     align-items: center;
 }
-body:has(.photo_viewer.active) ,body:has(.css083yewe.collapse) ,body:has(.bottom-sheet.show){
+body:has(.photo_viewer.active) ,body:has(.css083yewe.collapse) ,body:has(.bottom-sheet.show) ,body:has(.profile-data-edit.active){
     overflow-y: hidden;
 }
 .viewer-options{
@@ -804,7 +831,7 @@ header.hidden{
     /* display: none; */
 }
 .css083yewe{
-    background-color: var(--post-color2);
+    background-color: rgba(0,0,0,.3);
     position: relative;
     position: fixed;
     width: 100%;
@@ -814,7 +841,7 @@ header.hidden{
     /* backdrop-filter: blur(4px) */
     height: 100%;
     /* display: none; */
-    z-index: 10;
+    z-index: 20;
 }
 .side-navigation{
   position: absolute;
@@ -888,10 +915,54 @@ header.hidden{
 }
 .nav-cnt-cont{
     width:100%;
-    height: 130px;
-    border-radius: 15px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .5px solid var(--border-color2);
+    padding-bottom: 15px;
+}
+.sd-pdtl{
+    width: calc(100% - 50px);
+    padding-left: 10px;
+    height: fit-content;
+    position: relative;
+}
+.sd-add-user{
+    position: absolute;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    top: 0px;
+    border-radius: 50%;
     background-color: var(--post-color2);
-    border: .5px dashed var(--border-color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sd-add-user svg{
+    width: 70%;
+    height: 70%;
+
+}
+.sd-pdtl p{
+    font-weight: bold;
+    font-size: 15px;
+}
+.sd-pdtl span{
+    /* font-weight: bold; */
+    color: var(--span2);
+    font-size: 13px;
+}
+.sd-phI{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
+    border:.5px solid var(--border-color2);
 }
 .main-sd-nav-lnk{
     width: 100%;
@@ -909,12 +980,11 @@ header.hidden{
 }
 .sd-nv-lnk-opt{
     width: 100%;
-    max-width: 200px;
-    height: 35px;
-    border-radius: 6px;
-    background-color: var(--post-color2);
+    padding: 10px 0px;
+    /* background-color: var(--post-color2); */
     margin: 10px 0px;
 }
+
 .page-leader{
     padding-left: 10px;
 }
@@ -983,15 +1053,22 @@ header.hidden{
     background-color: #2f80ed;
 }
 .sd-nv-lnk-opt{
-    padding-left:20px ;
+    padding-left:10px ;
     display: flex;
     align-items: center;
 }
-
+.sd-nv-lnk-opt:hover{
+    background-color: var(--post-color2);
+}
 .sd-nv-lnk-opt p{
-    padding-left: 10px;
-    font-size: 15px;
+    padding-left: 15px;
+    
+    font-weight: bold;
     color: var(--text2);
+}
+.sd-nv-lnk-opt p span{
+    font-size: 15px;
+    font-weight: bold;
 }
 .sd-nv-lnk-opt svg{
     height: 20px ;
@@ -1016,4 +1093,29 @@ header.hidden{
     height: 100vh;
     z-index: 12;
     background-color: transparent;
+}
+.p-g-bold{
+    font-weight: 300 !important;
+}
+body.light .p-g-bold{
+    font-weight: 400 !important;
+}
+.general-header{
+    width: 100%;
+    position:sticky;
+    height: 45px;
+    top: 0px;
+    background-color: rgba(0,0,0,.9);
+    z-index: 20;
+    padding: 0px 10px;
+    display: flex;
+}
+.general-header .mre-edata-con p{
+    color: #fff;
+}
+.general-header .arw-bck-profile svg{
+    stroke: #fff;
+}
+.general-header .arw-bck-profile:hover{
+    background-color: black;
 }

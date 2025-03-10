@@ -73,6 +73,7 @@ const Explore = () => {
                     </div>
                     </div>
                 </div>
+                
                 {mobile && displayBottomNav? <Botttom_nav/> : <></>}
             </div>
         </div>

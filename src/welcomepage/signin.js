@@ -274,7 +274,7 @@ const Register = () => {
                                 }
                                 </>
                             </div>
-                            <button className="btn-btn1 btn-blue" disabled={ !validName || !validEmail || phone && countryCode?  true : false} onClick={handleSubmit} type="submit">Next</button>
+                            <button className="btn-btn1 btn-blue" disabled={ (validName && validEmail) || (validName && phone && countryCode) || (validName && validEmail && phone && countryCode)?  false : true} onClick={handleSubmit} type="submit">Next</button>
                             <Link to={"/login"}>Already have an account ?</Link>
                         </form>
                     </div>

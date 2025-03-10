@@ -1,0 +1,49 @@
+.feed-comm-mem{
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    align-items: center;
+    padding-left: 10px;
+}
+.feed-dtl{
+    width: 100%;
+    height: 25px;
+    /* background-color: red; */
+}
+.feed-mem-comm{
+    height: 100%;
+    width: 25px;
+    border-radius: 50%;
+    background-color: #4070f4;
+    /* position: absolute; */
+    border: 2px solid var(--post-color2);
+    margin-left: -10px;
+}
+.feed-comm-mem span{
+    font-size: small;
+    color: var(--span2);
+    padding-left: 10px;
+}
+.cmm-feed-pm{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
+    position: relative;
+}
+.cmm-feed-pm button{
+    padding: 0px 20px;
+    color: #fff;
+    border-radius: 20px;
+    height: 24px;
+    font-size: small;
+    top: 10px;
+    position: absolute;
+    align-self: center;
+    background-color: #4070f4;
+}
+.cmm-pstnme a{
+    font-size: 14px;
+}

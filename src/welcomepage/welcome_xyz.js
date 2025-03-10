@@ -39,6 +39,7 @@ const WelcomeXYZ = () => {
     const [gender,setGender]=useState("")
     const [genderw,setGenderw]=useState("Please select your gender")    
     const [success,setSuccess]=useState(false)
+    const [checkAlreadyAcc,setCheckAlreadyAcc] =useState(false)
     const years=[]
     const daysStuff=[]
     const minYear=currentYear-7
@@ -60,6 +61,42 @@ const WelcomeXYZ = () => {
     },[currYear])
     for (let i = 100; i > -1; i--) {
         years.push(minYear-i)
+    }
+    const checkgglacc=async ()=>{
+      try {
+        const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/authGoogle",{
+          method:"POST",
+          headers:{
+              'Content-Type': 'application/json',
+              
+          },
+          body: JSON.stringify({
+              
+              "email":authData.email,
+              
+              // "token":authData.token,
+              "sub":authData.sub,
+          }) 
+      })
+      const response=await request.json()
+      console.log(await response)
+        if (response.accessTokenJWT && response.refreshTokenJWT){
+          setAllowCookies(true)
+          setCook(response.refreshTokenJWT)
+          setCookies2(response.accessTokenJWT)
+          setTimeout(()=>{
+            window.location.reload()
+          },500)
+        }else{
+          setGoogleLogin(true)
+          hideLoader()
+        }
+      } catch (error) {
+        hideLoader()
+        setPrawler(`${error}`)
+        setErr(true)
+      }
+      
     }
     const createGoogleAccount =async ()=>{
         showLoader()
@@ -118,9 +155,11 @@ const WelcomeXYZ = () => {
                 })
                 const dat=await res.json()
                 console.log(dat)
-                setGoogleLogin(true)
+                setGoogleLogin(false)
+                
                 setAuthData({ ...dat ,"token" :response.access_token})
-               hideLoader()
+                setCheckAlreadyAcc(true)
+              // 
             } catch (error) {
               hideLoader()
               setPrawler(`${error}`)
@@ -128,7 +167,11 @@ const WelcomeXYZ = () => {
             }
         }
       });
-      
+      useEffect(()=>{
+        if(checkAlreadyAcc && authData){
+          checkgglacc()
+        }
+      },[checkAlreadyAcc])
   return (
     <>
         {!googleLogin? 

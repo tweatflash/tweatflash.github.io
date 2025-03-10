@@ -32,7 +32,7 @@ function CheckCookie() {
         "refreshToken":user,
         "accessToken" :user2
     }
-    console.log(signedCookies)
+    // console.log(signedCookies)
 }
 CheckCookie()
 export default axios.create({

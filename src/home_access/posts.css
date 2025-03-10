@@ -60,7 +60,7 @@ body.light .posts{
     height:40px;
     border-radius: 50%;
     border: .5px solid var(--border-color2);
-    /* background-color: #4070f4; */
+    background-color: var(--main-color2);
     padding: 1px;
     display: flex;
     justify-content: center;
@@ -69,6 +69,7 @@ body.light .posts{
 .pp-image img{
     width: 100%;
     height:100%;
+    background-size: cover;
     border-radius: 50%;
 }
 .nu-content{
@@ -81,7 +82,7 @@ body.light .posts{
     font-weight: 500;
 }
 .post-body{
-    padding: 5px 15px 10px 15px;
+    padding: 5px 15px 5px 15px;
 }
 .nu-content .userName span{
     border-radius: 4px;
@@ -114,6 +115,7 @@ body.light .posts{
     border-radius: 17px;
     /* border: .1px solid var(--border-color2); */
     background-color: var(--post-color2);
+    box-shadow:0 0 0  .5px inset var(--border-color2);
 }
 .post-content{
     margin-top: 10px;
@@ -130,10 +132,11 @@ body.light .psts_text{
 .posts-img{
     max-width: 100%;
     width: auto;
-    max-height: 400px;
+    max-height: 430px;
     border-radius: 15px;
-   padding: 0px 2.5px;
-
+    padding: 0px ;
+    background-color: var(--post-color2);
+    border:.5px solid var(--border-color2);
 }
 .post-name{
     font-size: 15px;
@@ -145,11 +148,25 @@ body.light .psts_text{
 }
 .posts-img img{
     max-width: 100%;
-    width: auto;
-    max-height: 400px;
+    width: 100%;
+    height: 100%;
+    max-height: 430px;
     border-radius: inherit;
     background: transparent;
-    border: 1px inset var(--border-color2);
+    /* border: 1px solid var(--border-color2); */
+    margin: auto;
+    transition: .3s;
+}
+.nnnn-image{
+    object-fit: cover;  
+  object-fit: cover;
+    object-position: center;
+    max-width: 100% !;
+    width: auto !;
+    max-height: 430px !;
+    border-radius: inherit;
+    background: transparent;
+    border: 1px solid var(--border-color2);
     margin: auto;
 }
 .posts-img{
@@ -160,9 +177,16 @@ body.light .psts_text{
     width: auto;
     max-height: 400px;
     border-radius: inherit;
-    border: 1px inset var(--border-color2);
+    border: 0px inset var(--border-color2);
     margin: auto;
-    border-radius: 15px;
+    border-radius: 0px;
+    margin: auto;
+}
+.posts-img:has(video){
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .posts-text-content{
     padding: 0px 0px 10px 5px;
@@ -184,27 +208,37 @@ body.light .psts_text{
 }
 .post-reaction{
     width: 100%;
-    margin-top: 15px;
+    margin-top: 0px;
     padding-bottom: 5px;
-    /* padding-top: 10px; */
+    padding-top: 10px;
 }
 .reaction-posts{
     height: 38px;
     display: flex;
-    flex-wrap: nowrap;
+   justify-content: space-between;
     gap:5px;
     width: 100%;
+
     position: relative;
+    left: -10px;
     /*  */
 }
 .post-act-action{
     height: 100%;
-    width: fit-content;
+    width: 100%;
     display: flex;
-    overflow: hidden;
-    padding: 0px 0px;
-    border-radius: 20px;
-    background-color: var(--post-color2);
+    align-items: center;
+    
+    flex-wrap: nowrap;
+}
+.other-psts-rct{
+    position: relative;
+    right: -10px;
+    display: flex;
+}
+.other-psts-rct .svg-wrpr{
+    width: 38px;
+    border-radius: 50%;
 }
 .psts_text{
     text-wrap: wrap;
@@ -221,7 +255,7 @@ body.light .psts_text{
 .svg-wrpr{
     /* width:20% ; */
     /* border: 1px solid var(--border-color2); */
-    padding: 7.5px 10px;
+    height: fit-content;
     /* border-radius: 10px; */
     font-size: small;
     /* background-color: var(--post-color2); */
@@ -229,35 +263,32 @@ body.light .psts_text{
     justify-content: center;
     position: relative;
     align-items: center;
+    gap: 5px;
     background-position: center;
+    background-color: ;
+    height: 100%;
     transition: background 0.8s;
+    width: 100%;
+    border-radius: 20px;
 }
 .svg-wrpr span{
     font-size: 12px;
-}
-.svg-wrpr:first-child {
-    padding-left: 15px;
-}
-.svg-wrpr:last-child {
-    padding-right: 15px;
-}
-.svg-wrpr:hover ,.mre-svg-wrpr:hover{
-    background:rgba(225,225,225,.07) radial-gradient(circle, transparent 1%, rgba(225,225,225,.07) 1%) center/15000%;
-}
-.svg-wrpr:active ,.mre-svg-wrpr:active{
-    background-color:rgba(225, 255, 225, .07);
-  background-size: 100%;
-  transition: background 0s;
-}
-.wrpr-svgs:hover{
-    background-color: transparent;
-    background-size: 0%;
-}
-.svg-wrpr::before{
-    content: "";
-    position: absolute;
-    width: 100%;
+    display: flex;
     height: 100%;
+    color: var(--svg-color);
+    align-items: center;
+}
+
+.svg-wrpr:hover                                                                                                                                              {
+    
+    background-color: var(--post-color2);
+
+}
+.svg-wrpr:first-child{
+    padding-left: 0px;
+}
+.svg-wrpr:last-child{
+    padding-right: 0px;
 }
 .wrpr-svgs{
     border: none;
@@ -270,16 +301,24 @@ body.light .psts_text{
     align-items: center;
     background-color:transparent;
     gap: 10px;
+    
+}
+.wrp-vg{
 
 }
-.wrpr-svgs::before{
-    display: none;
-}
 .reaction-posts svg{
-    height: 90%;
+    height: 19px;
+    width: 19px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+.reaction-posts .r-svg-fll{
+    fill: var(--svg-color);
+}
+.reaction-posts .r-svg-strk{
+    stroke: var(--svg-color);
     
 }
 .mre-svg-wrpr{
@@ -294,6 +333,15 @@ body.light .psts_text{
     background-position: top;
     transition: background 0.8s;
 }
+.wrpr-svgs{
+    padding: 10px !important;
+    /* padding-right: 0px ; */
+  
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+}
+
 svg.stroke{
     stroke: #f4144c;
 }
@@ -303,78 +351,14 @@ svg.fill{
 .comment-shit{
     
 }
-.like_btn:before,
-.like_btn:after {
-  position: absolute;
-  content: "";
-  width: 150%;
-  left: 50%;
-  height: 100%;
-  transform: translateX(-50%);
-  z-index: 10;
-  background-repeat: no-repeat;
+.post-name a{
+    color: var(--text2);
 }
 .post-head{
     position: relative;
     padding: 0px 15px;
 }
-.like_btn.animate::before {
-  top: -70%;
-  background-image: radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, transparent 20%, #f4144c 20%, transparent 30%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #f4144c 15%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%);
-  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
-    10% 10%, 18% 18%;
-  animation: greentopBubbles ease-in-out 0.6s forwards infinite;
-}
-@keyframes greentopBubbles {
-  0% {
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
-      40% 90%, 55% 90%, 70% 90%;
-  }
-  50% {
-    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
-      50% 50%, 65% 20%, 90% 30%;
-  }
-  100% {
-    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
-      50% 40%, 65% 10%, 90% 20%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
-}
-.like_btn.animate::after {
-  bottom: -70%;
-  background-image: radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #f4144c 15%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%),
-    radial-gradient(circle, #f4144c 20%, transparent 20%);
-  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
-  animation: greenbottomBubbles ease-in-out 0.6s forwards infinite;
-}
-@keyframes greenbottomBubbles {
-  0% {
-    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
-      70% -10%, 70% 0%;
-  }
-  50% {
-    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
-      105% 0%;
-  }
-  100% {
-    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
-      110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
-}
+
 .add-comments{
     width: 100%;
     height:auto ;
@@ -659,6 +643,38 @@ svg.fill{
 .btm-ssf .spinner-4{
     width: 25px;
 }
+.pr{
+    position: relative;
+    /* width: 100%; */
+    /* height: 100%; */
+}
+.mpo-cnt-hld{
+    position: fixed;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    align-items: stretch;
+    /* background-color: rgba(0, 0, 0, 0.00); */
+    /* border: 0 solid black; */
+    box-sizing: border-box;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 0px;
+    /* position: relative; */
+    text-decoration: none;
+    z-index: 0;
+    background-color: transparent   ;
+    z-index: 10;
+}
 .more-psts-option{
     width: 240px;
     height: auto;
@@ -669,16 +685,12 @@ svg.fill{
     right: 10px;
     top: 50px;
     z-index: 13;
-    opacity: 0;
-    visibility: hidden;
+    
     /* display: none; */
     box-shadow: 0 10.5px 21px rgba(0,0,0,.08);
     transition: .3s;
 }
-.more-psts-option.active{
-    visibility: visible;
-    opacity: 1;
-}
+
 .like_btn.liked svg{
     fill: #f4144c;
     stroke: none;
@@ -830,15 +842,13 @@ body:has(.comment-wrapper.active){
         /* border: .751px solid var(--border-color2); */
     }
     .posts-img{
-       padding: 5px;
+       padding: 0px;
     
     }
     .post-contain{
         /* padding: 12px 12px 8px 12px; */
     }
-    .psts_text{
-        font-weight: 500;
-    }
+    
 }
 @media screen and (max-width:380px) {
     .reaction-posts {
@@ -850,9 +860,8 @@ body:has(.comment-wrapper.active){
 }
 
 
-.posts-container header {
-    border-bottom: 0.3px solid var(--border-color2);
-}
+
+
 .feed-list-wrapper , .feed-list{
     width: 100%;
     height: auto;
@@ -890,4 +899,15 @@ body:has(.comment-wrapper.active){
 }
 .overflow-txt{
     
+}
+.ps-1{
+    padding: 15px 10px 0px;
+}
+.reply-cmt-id{
+    max-width: 100px;
+    height: 30px;
+    width: 100%;
+    background-color: var(--post-color2);
+    box-shadow:0 0 0  .2px inset var(--border-color2);
+    border-radius: 20px;
 }

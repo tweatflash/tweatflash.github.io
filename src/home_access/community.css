@@ -240,3 +240,37 @@
     padding-left: 10px;
     font-size: 15px;
 }
+.filter_posts{
+    background-color: var(--main-color2);
+}
+.community-page .notification path{
+    fill: none;
+    stroke: var(--text2);
+}
+.notification.add-cmm svg path{
+    fill:#fff !important;
+    stroke: none ;
+}
+.userName .cp-nm{
+    color: var(--text2) !important;
+}
+
+.cmty-spd{
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+    background-color: ;
+}
+.cmty-spd a{
+    display: flex;
+    align-items: center;
+    color:var(--span2) !important;
+    
+}
+.cmty-pi{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+}

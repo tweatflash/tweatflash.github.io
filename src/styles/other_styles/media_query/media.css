@@ -49,9 +49,7 @@
     .nav_link{
         padding: 0px 10px; 
     }
-    .header_navigation{
-        padding: 0px 10px;
-    }
+    
     .sd-a2{
         display: flex;
     }
@@ -86,9 +84,7 @@
         width:calc( 100% - 65px);
         left: 65px;
     }
-    .header_navigation{
-        padding: 0px 10px;
-    }
+    
     .sd-a2{
         display: none;
     }
@@ -126,5 +122,7 @@
         height: 90px;
         /* left: 10px; */
     }
-    
+    .psts_text{
+        font-size: 14px !important;
+     }
 }

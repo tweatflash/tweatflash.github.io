@@ -8,22 +8,22 @@ import './welcome.css'
 import useWindowSize from '../hooks/useWindowSize'
 
 const Welcome = () => {
-    const {signupModal , auth ,err,prawler,loading}=useContext(AuthContext)
+    const {signupModal ,setSignupModal, auth ,err,prawler,loading}=useContext(AuthContext)
     const {width}=useWindowSize()
     const navigator =useNavigate()
     return !auth && !loading?<> 
       <header>
             <div className="a">
                 <div className="logo">
-                    <div className="a1"></div>
+                    <div className="a1 lgo-a1"></div>
                     <div className="a2"><h2>tweatFlash</h2></div>
                 </div>
                <>
                 {
                     width<=450 ?<></> : <div className="logo" >
                     <div className="switch-continue">
-                        <button >Login</button>
-                        <button className="active">Join now</button>
+                        <button onClick={()=>navigator("/login")}>Login</button>
+                        <button  onClick={()=>navigator("/signup")} className="active">Join now</button>
                     </div>
                 </div>
                 }
@@ -59,6 +59,7 @@ const Welcome = () => {
             <div className="holder">
                 <div className="fixed-back" onClick={()=>{
                   navigator("/")
+                  setSignupModal(false)
                   document.querySelector(".login").classList.remove("preview")
                 }}>
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11 6L5 12M5 12L11 18M5 12H19" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>

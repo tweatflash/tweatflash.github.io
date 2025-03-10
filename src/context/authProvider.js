@@ -30,7 +30,11 @@ export const AuthProvider= ({children})=>{
     const [im,setIm]=useState(false)
     const [commentsPrawler,setCommentsPrawler] =useState([])
     const [showComments,setShowComments] =useState(false)
+    const [eOption,setEOption] =useState(false)
+    const [eCordinate,setECordinate]=useState([])
     const [postId,setPostId]=useState("")
+    const [showTweatstar , setShowTweatstar]=useState(false)
+    const [tweatstarID,setTweatstarID] =useState("")
     const cookies = new Cookies();
     let counter = 0
     let indexing = 0
@@ -95,7 +99,7 @@ export const AuthProvider= ({children})=>{
         })
       })
       const drew =await response
-      console.log(response)
+      // console.log(response)
      
       if(drew.data.user){
         setAuth(true)
@@ -163,7 +167,7 @@ export const AuthProvider= ({children})=>{
   },[cook , cookies2])
   
   useEffect(()=>{
-   console.log(imgUrl)
+  //  console.log(imgUrl)
   },[imgUrl])
   
   useEffect(()=>{
@@ -228,7 +232,11 @@ export const AuthProvider= ({children})=>{
               showComments,
               setShowComments,
               postId,
-              setPostId
+              setPostId,
+              eOption,
+              setEOption,
+              eCordinate,
+              setECordinate
             }
           }>
             {children}

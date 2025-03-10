@@ -30,6 +30,8 @@ import EachCommunity from './home_access/eachCommunity.js'
 import Reels from './home_access/reels.js'
 import Channels from './home_access/channels.js'
 import ExploreQ from './home_access/exploreQ.js'
+import ExploreComm from './home_access/exploreComm.js'
+
 const Main_App = () => {    
     
     const [data ,setData]=useState(false)
@@ -63,6 +65,7 @@ const Main_App = () => {
                         
                             <Route index element={<Community/>}/>
                             <Route path=':id' element={<EachCommunity/>}/>
+                            <Route path='explore' element={<ExploreComm/>}/>
                         </Route>
                         <Route path='monietization' element={<Monietization/>}/>
                         <Route path='bookmarks' element={<Bookmark/>}/>
