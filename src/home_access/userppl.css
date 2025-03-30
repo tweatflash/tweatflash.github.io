@@ -1,0 +1,42 @@
+.user-ppl{
+    width: 100%;
+}
+.f-flw{
+    height: 50px;
+    
+    width: 100%;
+    
+}
+.gh-2{
+    display: flex;
+    height: 45px;
+    
+}
+.user-ppl .general-header{
+    height:auto;
+    display: block;
+}
+.dm-hldr{
+    display: flex;
+    flex-wrap: nowrap;
+    /* gap: 10px; */
+    height: 100%;
+}
+.dm-cnt{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+.dm-cnt:hover{
+    background-color: var(--post-color2);
+}
+.dm-cnt.active{
+    border-bottom: 3px solid #4070f4;
+}
+.user-ppl-list{
+    height: auto    ;
+    width: 100%;
+}

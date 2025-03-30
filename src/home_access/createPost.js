@@ -71,7 +71,7 @@ const CreatePosts = () => {
         setUploadPost(true)
         navigate("/home")
         try {
-            const request =await axios.post('https://tweatflash.onrender.com/api/v1/posts/create',formData,{ headers: { 'Content-Type': 'multipart/form-data' } })
+            const request =await axios.post('/posts/create',formData,{ headers: { 'Content-Type': 'multipart/form-data' } })
             const response=await request
             console.log(request)
             if (request.status===201){

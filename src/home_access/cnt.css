@@ -15,9 +15,10 @@
 .civ-list{
   display: grid;
   grid-template-columns: repeat(2 , 1fr);
-  gap: .2rem;
+  gap: .1rem;
   background-color: transparent;
   height: 100% !important;
+  background-color: var(--border-color2);
   /* background:inset var(--main-color2);  */
 }
 .g-clm-3 .civ-data:first-child{
@@ -52,4 +53,8 @@
     height: 100% !important;
     max-height: 100%;
     min-height: 100%;
+}
+
+.img-img{
+
 }

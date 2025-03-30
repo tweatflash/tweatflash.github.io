@@ -1,0 +1,62 @@
+.create-community{
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+}
+.create-community-form{
+    width: 100%;
+    padding: 15px;
+}
+.create-community-form h2{
+    font-size: 23px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.crt-cmm-des{
+    color: var(--span2);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.create-community-form .password_wrapper{
+    margin: 20px 0px;
+    height: auto;
+    border: none;
+}
+.create-community-form textarea{
+    min-height: 130px;
+    border-radius: inherit;
+}
+.create-community-form input{
+    height: 60px;
+}
+.cc-cmty-btn{
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+.cc-cmty-btn button{
+    padding: 8px 20px;
+    background-color: var(--main-color2);
+    background-color: var(--post-color2);
+    border-radius: 5px;
+    border: none;
+    color: var(--text2);
+    box-shadow:0 0 0  .8px inset var(--border-color2);
+}
+.cc-cmty-btn .cc-btn-cn{
+    background-color: #4070f4;
+    color: white;
+    border: none;
+}
+.create-community-form .password_wrapper ,.create-community-form .password_wrapper input{
+    background-color: var(--main-color2);
+}
+.create-community-form .password_wrapper textarea ,.create-community-form .password_wrapper input{
+    border:.8px solid var(--border-color2);
+    color: var(--text2);
+}
+.create-community .loader-holder{
+    position: ;
+
+}

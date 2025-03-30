@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import AuthContext from '../context/authProvider'
 import './home.css'
 import './bmsheet.css'
-
 import Header from './header'
 import Navigation_Menu from './navigation'
 import home from '../assets/images/svg/home.svg'
@@ -10,7 +9,7 @@ import explore from '../assets/images/svg/explore.svg'
 import '../styles/other_styles/media_query/media.css'
 import Botttom_nav from './bottom_nav'
 import useWindowSize from '../hooks/useWindowSize'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import Access_Loader from '../loading_component/access_loader'
 import CommentsPage from './commentsPage'
 import profileImg from '../assets/images/svg/profile.svg'
@@ -19,19 +18,23 @@ import { AsyncImage } from 'loadable-image'
 
 const Home = () => {
     const {width}=useWindowSize()
-    const {auth, userAuth,homeErr,booleanErrHome,showComments,setShowComments, eOption,
+    const navigator =useNavigate()
+    const {auth, userAuth,homeErr,booleanErrHome,showComments,setShowComments, eOption,showBm,
         setEOption,
         eCordinate,
         setECordinate, commentsPrawler,setCommentsPrawler,sidenav,setSideNav,setImgUrl,focusMagic, imgUrl,im,setIm}=useContext(AuthContext)
     const ogaRef=useRef(null)
     let mobile
     useEffect(()=>{
-        // console.log(deviceType);
+       if (auth && userAuth){
+        console.log(userAuth)
+       }
         mobile=width<=450
        
     },[])
     useEffect(()=>{
         if (eOption && ogaRef.current ){
+            
             const contextMenu = document.querySelector(".more-psts-option")
 
            
@@ -47,8 +50,8 @@ const Home = () => {
         // x = x > winWidth - cmWidth ? winWidth - cmWidth - 5 : x;
         // y = y > winHeight - cmHeight ? winHeight - cmHeight - 5 : y;
         
-        contextMenu.style.left = `${(eval(x - 240))}px`;
-        contextMenu.style.top = `${y}px`;
+        // contextMenu.style.left = `${(eval(x - 240))}px`;
+        // contextMenu.style.top = `${y}px`;
         contextMenu.style.visibility = "visible";
             
 
@@ -83,27 +86,20 @@ const Home = () => {
                                 <div className='sd-pdtl'>
                                     <p>{userAuth.user.name}</p>
                                     <span>@{userAuth.user.username}</span>
-                                    <div className='sd-add-user'>
-                                        <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M12 6V18" stroke="#000000" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div className="main-sd-nav-lnk">
                                 <div className='sd-nv-lnk-container'>
                                     <div className='sd-nv-lnk-cnt'>
                                         <div className='sd-nv-lnk-slc'>
-                                            <div className='sd-nv-lnk-opt'>
-                                            <svg className="bookmars-svg" viewBox="0 0 24 24">
-                                                    <g>
-                                                        <path d="M3 9H9.5M21 9H9.5M9.5 9L14.5 4M14.5 4H17.8C18.8467 4 19.4044 4 19.8221 4.1779M14.5 4H6.2C5.07989 4 4.51984 4 4.09202 4.21799C3.71569 4.40973 3.40973 4.71569 3.21799 5.09202C3 5.51984 3 6.07989 3 7.2V16.8C3 17.9201 3 18.4802 3.21799 18.908C3.40973 19.2843 3.71569 19.5903 4.09202 19.782C4.51984 20 5.07989 20 6.2 20H17.8C18.9201 20 19.4802 20 19.908 19.782C20.2843 19.5903 20.5903 19.2843 20.782 18.908C21 18.4802 21 17.9201 21 16.8V7.2C21 6.07989 21 5.51984 20.782 5.09202C20.5903 4.71569 20.2843 4.40973 19.908 4.21799C19.88 4.20371 19.8514 4.19037 19.8221 4.1779M9 4L4 9M15 9.00015L19.8221 4.1779M15 14.5L10 17.5V11.5L15 14.5Z"></path>
-                                                        
-                                                    </g>
-                                                </svg>
+                                            <div className='sd-nv-lnk-opt' onClick={()=>navigator("/settings")}>
+                                                <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4277 2C11.3139 2 10.2995 2.6007 8.27081 3.80211L7.58466 4.20846C5.55594 5.40987 4.54158 6.01057 3.98466 7C3.42773 7.98943 3.42773 9.19084 3.42773 11.5937V12.4063C3.42773 14.8092 3.42773 16.0106 3.98466 17C4.54158 17.9894 5.55594 18.5901 7.58466 19.7915L8.27081 20.1979C10.2995 21.3993 11.3139 22 12.4277 22C13.5416 22 14.5559 21.3993 16.5847 20.1979L17.2708 19.7915C19.2995 18.5901 20.3139 17.9894 20.8708 17C21.4277 16.0106 21.4277 14.8092 21.4277 12.4063V11.5937C21.4277 9.19084 21.4277 7.98943 20.8708 7C20.3139 6.01057 19.2995 5.40987 17.2708 4.20846L16.5847 3.80211C14.5559 2.6007 13.5416 2 12.4277 2ZM8.67773 12C8.67773 9.92893 10.3567 8.25 12.4277 8.25C14.4988 8.25 16.1777 9.92893 16.1777 12C16.1777 14.0711 14.4988 15.75 12.4277 15.75C10.3567 15.75 8.67773 14.0711 8.67773 12Z" fill="none"></path> </g></svg>
                                                 <p>
                                                     <span>Settings</span>
                                                 </p>
                                             </div>
-                                            <div className='sd-nv-lnk-opt'>
+                                            <div className='sd-nv-lnk-opt' onClick={()=>navigator("/bookmarks")}>
                                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 6.2C5 5.07989 5 4.51984 5.21799 4.09202C5.40973 3.71569 5.71569 3.40973 6.09202 3.21799C6.51984 3 7.07989 3 8.2 3H15.8C16.9201 3 17.4802 3 17.908 3.21799C18.2843 3.40973 18.5903 3.71569 18.782 4.09202C19 4.51984 19 5.07989 19 6.2V21L12 16L5 21V6.2Z" strokeWidth="2" stroke-linejoin="round"></path> </g></svg>
                                                 <p>
                                                     <span>Bookmarks</span>
@@ -126,10 +122,10 @@ const Home = () => {
                                                     <span>Premium</span>
                                                 </p>
                                             </div>
-                                            <div className='sd-nv-lnk-opt'>
+                                            <div className='sd-nv-lnk-opt'  onClick={()=>navigator("/monietization")}>
                                                 <svg className='sd-notification' viewBox="0 -2.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fill-rule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -922.000000)"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M262,764.291 L254,771.318 L246,764.281 L246,764 L262,764 L262,764.291 Z M246,775 L246,766.945 L254,773.98 L262,766.953 L262,775 L246,775 Z M244,777 L264,777 L264,762 L244,762 L244,777 Z"> </path> </g> </g> </g> </g></svg>
                                                 <p>
-                                                    <span>Messages</span>
+                                                    <span>Wallet</span>
                                                 </p>
                                             </div>
                                             <div className='sd-nv-lnk-opt'>
@@ -172,14 +168,14 @@ const Home = () => {
                             
                             </div> : <></>}
                             { showComments ? <CommentsPage commentsPrawler={commentsPrawler}/> :<></>}
-                            {eOption ? <div className='pr'>
+                            {eOption ? <div className={`pr ${eOption ? "pr2" :"" }`}>
                             
                                 <div className='mpo-cnt-hld' onClick={()=>{
                                 setEOption(false)
                                 setECordinate([])
                             }}>
                             </div>
-                            {eOption ?<div className={`more-psts-option`} ref={ogaRef} tabIndex={2}>
+                            {eOption ?<div className={`more-psts-option `} ref={ogaRef} tabIndex={2}>
                                     <div className='feed-list-wrapper'>
                                         <div className='feed-list'>
                                             <div className='feed-list-item'>
@@ -304,19 +300,13 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        {width >550? <div className='css0001_mre'>
-                            <div className='chck_sm'>
-                                
-                            </div>
-                        </div>:
-                        <></>
-                        }
+                        
                     </div>
                     </div>
                     
                 </div>
                 
-                {width <=550 ? <Botttom_nav/> : <></>}
+                {width <=550  && showBm? <Botttom_nav/> : <></>}
                
             </div>
             

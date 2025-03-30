@@ -74,20 +74,20 @@ body.light{
 }
 
 .hmmmshit{
-    max-width: 1200px;
+    /* max-width: 1200px; */
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
     position: relative;
 }
 .route_nav_wrapper{
-    width: calc(250px);
+    width: calc(70px);
     height: 100%;
-    
+    z-index: 2;
     position: absolute;
     top: 0px;
     background-color: var(--main-color2);
-    border-top: 0px solid var(--border-color2);
+    border-right: 1px solid var(--border-color2);
 }
 .main_data_extractor .css0000_main{
     width:calc( 100% - 250px);
@@ -104,7 +104,7 @@ body.light{
     /* background-color: aqua; */
 }
 .vdv{
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     min-height: 100vh;
     height:auto;
@@ -112,7 +112,7 @@ body.light{
     /* position: absolute; */
     position: relative;
     margin: auto;
-    border-left: 1px solid var(--border-color2);
+    border-left: 0px solid var(--border-color2);
     display: flex;
     justify-content: center;
 }
@@ -131,7 +131,18 @@ body.light{
     height: 100vh;
     border-left: 1px solid var(--border-color2);
     padding: 10px;
-    padding-top: 60px;
+    padding-top: 0px;
+
+}
+.mre-hdr{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+}
+.mre-hdr button{
+    width:  200px;
 }
 .chck_sm{
     width: 100%;
@@ -161,7 +172,7 @@ body.light{
 .nav_link{
     width: 100%;
     height: 45px;
-    border-radius: 30px;
+    border-radius: 5px;
     /* background-color: rgba(225,225,225,.2); */
     margin: 8px 0px;
     display: flex;
@@ -311,6 +322,39 @@ body.light{
     box-shadow:0 0 0  .5px inset var(--border-color2);
     overflow: hidden;
 }
+.nav_link .text{
+    display: none;
+}
+.route_nav_wrapper{
+    
+}
+.nav_link{
+    padding: 0px;
+}
+.main_data_extractor .css0000_main{
+    width:calc( 100% - 65px);
+    left: 65px;
+}
+.sd-a2{
+    display: none;
+}
+.sd-logo-container{
+    padding-left: 0px;
+    display:flex;
+    justify-content: center;
+}
+.sd-logo{
+    /* width:100%; */
+    height: 100%;
+
+    
+    padding: 0px;
+    border: none;
+}
+.sd-a1{
+    width:35px;
+}
+
 @media screen and (max-width:450px) {
     .bm-wrapper{
         max-width: 100%;
@@ -406,6 +450,7 @@ body.light .bm-wrapper{
     align-items: center;
     background-color: var(--post-color2);
 }
+
 .sd-logo-container{
     width: 100%;
     overflow: hidden;
@@ -446,7 +491,7 @@ body.light .bm-wrapper{
     padding: 0px 5px 0px 7.5px;
 }
 .main_data_extractor .a1{
-    width: 22.3px;
+    /* width: 22.3px; */
 }
 .set1{
     display: flex;
@@ -545,7 +590,9 @@ body.light .bm-wrapper{
 }
 .navigate_wrapper{
     position:relative;
-    height: calc(100% - 50px);
+    height: calc(100% - 0px);
+    display: flex;
+    align-items: center;
 }
 .filter_posts{
     width: 100%;
@@ -906,6 +953,7 @@ header.hidden{
 .css083yewe.collapse{
     visibility: visible;
     opacity: 1;
+    z-index: 22;
 
 }
 .sd-nav-body{
@@ -1063,12 +1111,12 @@ header.hidden{
 .sd-nv-lnk-opt p{
     padding-left: 15px;
     
-    font-weight: bold;
+    font-weight: 300;
     color: var(--text2);
 }
 .sd-nv-lnk-opt p span{
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 400;
 }
 .sd-nv-lnk-opt svg{
     height: 20px ;
@@ -1095,27 +1143,78 @@ header.hidden{
     background-color: transparent;
 }
 .p-g-bold{
-    font-weight: 300 !important;
+    font-weight: 200 !important;
 }
 body.light .p-g-bold{
-    font-weight: 400 !important;
+    font-weight: 300 !important;
+}
+@media screen and (max-width:550px) {
+    .p-g-bold{
+        font-weight: 300 !important;
+    }
+    body.light .p-g-bold{
+        font-weight: 400 !important;
+    }
 }
 .general-header{
     width: 100%;
     position:sticky;
     height: 45px;
     top: 0px;
-    background-color: rgba(0,0,0,.9);
+    background-color: var(--main-color2);
     z-index: 20;
     padding: 0px 10px;
     display: flex;
 }
+.general-header::before{
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    left: 0px;
+    height: 1px;
+    z-index: 20;
+    width: 100%;
+    box-shadow:0 0 0 .3px inset var(--border-color2);
+}
 .general-header .mre-edata-con p{
     color: #fff;
+    font-weight: 300;
 }
 .general-header .arw-bck-profile svg{
     stroke: #fff;
 }
 .general-header .arw-bck-profile:hover{
-    background-color: black;
+    background-color: var(--post-color2);
+}
+.nav_link .text{
+    display: none;
+}
+.route_nav_wrapper{
+    
+}
+.nav_link{
+    padding: 0px;
+}
+.main_data_extractor .css0000_main{
+    width:calc( 100% - 65px);
+    left: 65px;
+}
+.sd-a2{
+    display: none;
+}
+.sd-logo-container{
+    padding-left: 0px;
+    display:flex;
+    justify-content: center;
+}
+.sd-logo{
+    /* width:100%; */
+    height: 100%;
+
+    
+    padding: 0px;
+    border: none;
+}
+.sd-a1{
+    width:35px;
 }

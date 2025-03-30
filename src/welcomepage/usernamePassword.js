@@ -48,7 +48,7 @@ const UsernamePassword = ({user,email,gender,dobFormat}) => {
       const registerUser=async ()=>{
         showLoader()
         try {
-            const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/register",{
+            const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/register",{
                 method:"POST",
                 headers:{
                     'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const UsernamePassword = ({user,email,gender,dobFormat}) => {
         console.log(email)
         showLoader()
         try { 
-            const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/usernameAuth",{
+            const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/usernameAuth",{
                 method:"POST",
                 headers:{
                     'Content-Type': 'application/json',

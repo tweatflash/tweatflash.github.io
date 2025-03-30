@@ -32,6 +32,7 @@ export const AuthProvider= ({children})=>{
     const [showComments,setShowComments] =useState(false)
     const [eOption,setEOption] =useState(false)
     const [eCordinate,setECordinate]=useState([])
+    const [showBm,setShowBm]=useState(true)
     const [postId,setPostId]=useState("")
     const [showTweatstar , setShowTweatstar]=useState(false)
     const [tweatstarID,setTweatstarID] =useState("")
@@ -236,7 +237,8 @@ export const AuthProvider= ({children})=>{
               eOption,
               setEOption,
               eCordinate,
-              setECordinate
+              setECordinate,
+              showBm,setShowBm
             }
           }>
             {children}

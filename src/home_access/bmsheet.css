@@ -202,12 +202,26 @@
     /* background-color: var(--post-color2); */
     border-radius: 10px;
     /* border: 1.5px solid var(--border-color2); */
-    margin: 10px 0px;
+   
 }
 .prompt-content li .comment{
     display: flex;
     justify-content: space-between;
+    padding: 15px 15px;
     padding-right: 15px;
+    position: relative;
+}
+.comment:hover{
+    /* background-color: var(--post-color2); */
+}
+.comment::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 1px;
+    box-shadow:0 0 0  .3px inset var(--border-color2);
+    left: 0px;
 }
 .comment .profile{
     width: 35px;
@@ -226,9 +240,9 @@
     width: fit-content;
     max-width: 100%;
     position: relative;
-    background-color: var(--post-color2);
+    /* background-color: var(--post-color2); */
     /* border: .5px solid var(--border-color2); */
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     border-radius: 15px;
 }
 
@@ -246,25 +260,27 @@
     color: var(--text2);
     /* padding: 5px 0px; */
     margin-bottom: 5px;
-    font-size: .8em;
-    font-weight:bold;
+    font-size:14px;
+    font-weight:500;
     display: block;
 }
 .comment-text p{
     color: var(--span2);
     font-size: .9em;
-    /* padding: 15px; */
+    padding: 0px 0px 5px;
     /* border: 1px solid var(--border-color2); */
     /* background-color: var(--post-color2); */
-    border-radius: 10px;
+    border-radius: 15px;
     border-top-left-radius: 0px;
     white-space: pre-wrap;
     max-width: 100%;
     text-wrap: wrap;
+    width: fit-content;
     word-wrap: break-word;
 }
 .us-cmt-opt{
     padding: 7.5px;
+    padding-left: 0px;
     display: flex;
     justify-content: space-between;
 }
@@ -352,7 +368,7 @@
 }
 .reply-wrp{
     border-radius: 15px;
-    width: fit-content;
+    width: 100%;
     padding: 10px;
     background-color: var(--post-color2);
     margin-bottom: 10px;
@@ -366,6 +382,7 @@
     height: 30px;
     border-radius: 50%;
     background-color: antiquewhite;
+    overflow: hidden;
 }
 .rply-phld{
     width: calc( 100% - 30px);
@@ -398,6 +415,7 @@
     width: auto;
     max-height: 250px;
     border-radius: 15px;
+    /* border-top-left-radius: 0px; */
 }
 .cmt-img img{
     max-width: 100%;
@@ -481,6 +499,7 @@
     position: absolute;
     opacity: 0;
     z-index: -1;
+    width: 100%;
 }
 .img-cnc svg{
     width: 100%;

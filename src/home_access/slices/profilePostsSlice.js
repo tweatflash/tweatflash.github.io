@@ -13,5 +13,5 @@ const ProfilePostsSlice=createSlice({
     }
 })
 export const  {ProfilePostAdded}=ProfilePostsSlice.actions
-export const selectAllPosts=(state)=> state.forYouPosts
+export const AllProfilePosts=(state)=> state.profilePosts
 export default ProfilePostsSlice.reducer 

@@ -6,6 +6,9 @@ import { Blur, Grow, Slide } from 'transitions-kit'
 import { AsyncImage } from 'loadable-image'
 import Access_Loader from '../loading_component/access_loader'
 import Feed from './feed'
+import { Link } from 'react-router-dom'
+import FollowDetails from './follow'
+
 const ExploreQ = () => {
     const [searchFocus,setSearchFocus] =useState(false)
     const [pageInit,setPageInit] =useState(true)
@@ -16,9 +19,9 @@ const ExploreQ = () => {
     const [b,setB] =useState([])
 
     const {auth,cook,cookies2 , setFnp,userAuth,setSideNav ,setBooleanErrHome,setHomeErr} =useContext(AuthContext)
-    const searchFetch= async ()=>{
+    const searchFetch= async (data)=>{
         try {
-            const request =await axios.post(`/search/?md=${message}`,{
+            const request =await axios.post(`/search/?md=${data}`,{
                 signedCookies:JSON.stringify({
                     refreshToken: cook,
                     accessToken:cookies2
@@ -41,14 +44,15 @@ const ExploreQ = () => {
                 signedCookies:JSON.stringify({
                     refreshToken: cook,
                     accessToken:cookies2
-                })
+                }),
+                Ids:[]
             })
             const response=await request
             console.log(response)
             setPageInit(false)
             setA(response.data.users)
-            setB(response.data.posts)
-            setExplorePosts(response.data.posts)
+            // setB(response.data.posts)
+            // setExplorePosts(response.data.posts)
         } catch (error) {
             console.log(error)
             setBooleanErrHome(true)
@@ -64,7 +68,7 @@ const ExploreQ = () => {
     useEffect(()=>{
         if (message.length){
             setPageInit(true)
-            searchFetch()
+            // searchFetch()
         }else{
             setExplorePosts([...b])
         }
@@ -82,6 +86,7 @@ const ExploreQ = () => {
                                 placeholder='Search anything'
                                 value={message}
                                 onChange={(e)=>setMessage(e.target.value)}
+                                onKeyUp={(e)=>{searchFetch(e.target.value)}}
                                 onBlur={(e)=> setSearchFocus(false)}
                                 onFocus={(e)=>setSearchFocus(true)}
                             />
@@ -108,39 +113,14 @@ const ExploreQ = () => {
                 <div className='explore-wrpr'>
                     {pageInit ?<Access_Loader/>:<div className='explore-sections'>
                         {
-                            exploreUsers.length ? 
+                            a.length ? 
                             <div className='ex-sec-user'>
-                                <h2 className='list-title'>Who to follow</h2>
+                                <h2 className='list-title'>People</h2>
                                 <div className='usersfl-container'>
                                     <div className='ex-us-c'>
                                         {
-                                        
-                                            exploreUsers.slice(0,5).map(item=>(
-                                                <div className='ex-users'>
-                                                    <div className='ex-usr-phto'>
-                                                        <AsyncImage
-                                                            key={1}
-                                                            src={item.profileImage}
-                                                            Transition={Blur}
-                                                            style={{ width: "100%", height: "100%", borderRadius: 50 }}
-                                                            loader={<div style={{ background: '#888' }} />}
-                                                        />
-                                                    </div>
-                                                    <div className='ex-user-mre-data'>
-                                                    
-                                                        <div className='ex-user-desc'>
-                                                                <p className='post-name'>{item.name}</p>
-                                                                <p className='userName'>
-                                                                    <span className='userName'>
-                                                                        @{item.username}
-                                                                    </span>
-                                                                </p>
-                                                        </div>
-                                                        <button>
-                                                            Follow
-                                                        </button>
-                                                </div>
-                                                </div>
+                                            a.map(item=>(
+                                                <FollowDetails item={item}/>
                                             ))
                                             
                                         }

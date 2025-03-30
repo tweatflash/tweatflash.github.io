@@ -125,10 +125,15 @@ const Content_wrapper = ({item,index,im,setIm,setImgUrl,setPostClick}) => {
                         className='posts-img' style={{ 
                             aspectRatio :`${eval(dimensions.width / dimensions.height )}`,
                             maxWidth: '100%', 
+                            width:"100%",
                             maxHeight: '400px', 
                             overflow: 'hidden', 
                         }}>
-                            <div className='blg-v-cnt'></div> 
+                            <div className='blg-v-cnt'>
+                                <div className='video-toggler custm-fja'>
+                                    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="#fff"></path> </g></svg>
+                                </div>    
+                            </div> 
                             <video 
                                 ref={videoRef} 
                                 className='blog-video' id={`video-post-${item._id}`} 
@@ -141,22 +146,25 @@ const Content_wrapper = ({item,index,im,setIm,setImgUrl,setPostClick}) => {
                         </div> : 
                         
                     ((item.img instanceof Array && item.img.length) ? <div 
-                        className='posts-img' 
+                        className='posts-img img-img' 
                         style={{ 
                             aspectRatio :`${eval(dimensions.width/dimensions.height )}`,
                             maxWidth: '100%', 
                             maxHeight: '430px', 
                             overflow: 'hidden', 
-                        
+                            minWidth:"240px",                                                                           
                         }}>
                             <img 
                                 style={{ 
                                     visibility:"hidden" ,
-                                    opacity:0
+                                    opacity:0,
                                 }} 
                                 onLoad={(e)=>{
                                     e.target.style.visibility="visible"
                                     e.target.style.opacity="1"
+                                }}
+                                onError={(e)=>{
+                                    e.target.style.height="220px"
                                 }}
                                 src={item.img[0]} 
                                 onClick={(e)=>{
@@ -174,6 +182,7 @@ const Content_wrapper = ({item,index,im,setIm,setImgUrl,setPostClick}) => {
                             maxWidth: '100%', 
                             maxHeight: '430px', 
                             overflow: 'hidden', 
+                            minWidth:"240px",
                         }} >
                         <img src={item.img}
                             style={{ 
@@ -184,7 +193,9 @@ const Content_wrapper = ({item,index,im,setIm,setImgUrl,setPostClick}) => {
                                 e.target.style.visibility="visible"
                                 e.target.style.opacity="1"
                             }}
-                    
+                            onError={(e)=>{
+                                e.target.style.height="220px"
+                            }}
                             onClick={(e)=>{
                                 setPostClick(false)
                                 setImgUrl([item.img])

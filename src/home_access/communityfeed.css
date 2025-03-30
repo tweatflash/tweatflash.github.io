@@ -6,7 +6,7 @@
     flex-wrap: nowrap;
     position: relative;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 0px;
 }
 .feed-dtl{
     width: 100%;
@@ -25,7 +25,7 @@
 .feed-comm-mem span{
     font-size: small;
     color: var(--span2);
-    padding-left: 10px;
+    padding-left: 5px;
 }
 .cmm-feed-pm{
     display: flex;
@@ -46,4 +46,8 @@
 }
 .cmm-pstnme a{
     font-size: 14px;
+    font-weight: 400 ;
+}
+body.light .cmm-pstnme a{
+    font-weight: 500;
 }

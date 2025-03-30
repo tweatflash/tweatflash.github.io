@@ -20,17 +20,9 @@ const OtherProfile = () => {
   const [hro,setHro] =useState(false)
   const [userErr,setUserErr] =useState(true)
   const [userAuth,setUserAuth] =useState({})
-  
-  let postRemain
-  // console.log(userAuth)
-  const postsRef =useRef(null)
-    // const cookiep=useCookies()
-    let counter = 0,
-      indexing = 0,
-      newPosts=[],
-      gwghwhgwh=0
-  let user={}
+  const postsRef2 =useRef(null)
   const data=useParams()
+  const [accountError,setAccountError]=useState(false)
   
   const fetchPosts1=async ()=>{
     
@@ -43,75 +35,73 @@ const OtherProfile = () => {
         })
       })
       const response=await request
-      if(response.data){
+      console.log(response)
+      if(response.data.user){
         setUserErr(false)
         setUserAuth(response.data.user)
+        setAccountError(false)
       }else{
         setUserErr(true)
+        setAccountError(true)
       }
     } catch (error) {
+      setAccountError(true)
       console.log(error)
       setUserErr(true)
     }
   }
-  const io = new IntersectionObserver(entries => {
+  
+  useEffect(()=>{
+    fetchPosts1()
+
+  },[])
+  const fetchPosts=async ()=>{
+     
+   if (pLoader){
+    try {
+      const request =await axios.post(`/posts/user/${data.user}`,{
+        signedCookies:JSON.stringify({
+          refreshToken: cook,
+          accessToken:cookies2
+        }),
+        skipCount:0 
+      })
+      const response=await request
+      console.log(response)
+      // if(!response.data.posts.length){
+      //   setHro(true)
+      //   setPloader(false)
+        
+      // }
+      // if(response.data.posts.length){
+      //   setHro(false)
+      //   setUserPosts([...userPosts, ...newPosts])
+      //   setPloader(false)
+      
+      // }
+    } catch (error) {
+      console.log(error)
+    }
+   }else{
+    setPloader(false)
+   }
+  }
+  const io2 = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) {
         return;
-      }else{
+      }else{ 
+        setPloader(true)
         fetchPosts()
       }
     });
   });
   useEffect(()=>{
-    fetchPosts1()
-    
+    if (postsRef2.current) { 
+      const loader = document.getElementById("posts-rld2")
+      io2.observe(loader);
+    }
   },[])
-  if (postsRef.current) { 
-      const loader = document.getElementById("posts-rld")
-      io.observe(loader);
-    }
-   const fetchPosts=async ()=>{
-     
-      try {
-        gwghwhgwh=gwghwhgwh+ userPosts.length
-        const request =await axios.post(`/posts/user/${data.user}`,{
-          signedCookies:JSON.stringify({
-            refreshToken: cook,
-            accessToken:cookies2
-          }),
-          skipCount:gwghwhgwh
-        })
-
-        const response=await request
-       
-        if(!response.data.posts.length){
-          setHro(true)
-          
-        }else{
-          setHro(false)
-        }
-        if(response.data.posts.length){
-          gwghwhgwh=gwghwhgwh+ response.data.posts.length
-          counter = response.data.posts.length
-          for (let i =0;  i<counter; i++){
-              newPosts.push(response.data.posts[i])
-              
-            
-          }
-          setUserPosts([...userPosts, ...newPosts])
-          // newPosts=[]
-          indexing = indexing+ counter
-          setPloader(false)
-          postRemain=response.data.posts.length
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    
-
-  
   return (
     <div className='user_page_wrapper'>
       {
@@ -243,7 +233,7 @@ const OtherProfile = () => {
                         }
                         <>
                           { !hro ?
-                             <div className='btm-ssf' id ="posts-rld" ref={postsRef}><div class="spinner-4"></div></div> : <p className='userName f-psts'>No posts to display</p>
+                             <div className='btm-ssf' id ="posts-rld2" ref={postsRef2}><div class="spinner-4"></div></div> : <p className='userName f-psts'>No posts to display</p>
                           }
                         </>
                         <div className={`btm-nav-cvr ${width <=550 ? "av-und-spc" :""}`}></div>
@@ -251,7 +241,9 @@ const OtherProfile = () => {
                     </div>
                   </div>
                 </div>
-              : <></>}
+              : <>
+                <h2>Error</h2>
+              </>}
 
 
 
@@ -262,7 +254,58 @@ const OtherProfile = () => {
             </div>
           </div>
         </div>
-    </div> :<Access_Loader/>
+    </div> :(userErr && accountError? <>
+      <div className='general-header'>
+            <div className='arrow-back' onClick={()=> navigator(-1)}>
+              <div className='arw-bck-profile custm-fja'>
+                <svg viewBox="0 0 24 24" fill="none"   ><g  strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g> <path d="M11 6L5 12M5 12L11 18M5 12H19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+              </div>
+            </div>
+            <div className='mre-edata-con'>
+              <p>@{data.user}</p>
+              
+            </div>
+          </div>
+      <div className='profile_wrapper'>
+          <div className='cover_image'>
+            <div className='cvr-img'>
+              {userAuth.coverImage ? <img src={userAuth.coverImage} onClick={()=>{
+                        setIm(true)
+                        setImgUrl([userAuth.coverImage])
+                      }} className='img'/> :<></>}
+              <div className='profile_image'>
+                <div className='prf-img'
+                
+                >
+                  
+                  <img style={ width <= 550 ? {width:"90px", height:"90px"}: {width:"100%", height:"100%"} } src={profileImg}/>
+                </div> 
+                
+              </div>
+            </div>
+          </div>
+          <div className={`profile-details-data ${ width <= 550 ? "profile-mbl": "profile-nml" }`}>
+            <div className='profile-patch'>
+            </div>
+            <div className='profile-details'>
+              <h3 className='useromin'>
+                An Unexpected Error occured
+              </h3>
+              <p className='userName'>
+                <span>@{data.user}</span>
+              </p>
+              <div className='user_e_dta'>
+              <p>
+                Please check your internet connection and try again or most likely this account has been suspended
+              </p>
+            </div>
+           
+            </div>
+            
+            
+          </div>
+        </div>
+    </>: <Access_Loader/>)
       }
     </div>
   )

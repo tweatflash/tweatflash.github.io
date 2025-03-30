@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AuthContext from '../context/authProvider'
 const Navigation_Menu = () => {
+    const {auth,userAuth}=useContext(AuthContext)
     const navigator=useNavigate()
     const navigation_objexts=[
         {
-            "active":true,
+            "active":false,
             "fill":true,
             "name":"Home",
             "route":"/home",
@@ -31,23 +33,24 @@ const Navigation_Menu = () => {
             "css_class":"css007-sts"
         },
         {
+            
             "active":false,
             "fill":false,
-            "name":"Messages",
+            "name":"Community",
             "route":"/community",
-            "svg_path":"M4 6H20V18H4V6ZM6.56066 7.5L12 12.9393L17.4393 7.5H6.56066ZM18.5 8.56066L12 15.0607L5.5 8.56066V16.5H18.5V8.56066Z",
+            "svg_path":"M7.501 19.917L7.471 21H.472l.029-1.027c.184-6.618 3.736-8.977 7-8.977.963 0 1.95.212 2.87.672-.444.478-.851 1.03-1.212 1.656-.507-.204-1.054-.329-1.658-.329-2.767 0-4.57 2.223-4.938 6.004H7.56c-.023.302-.05.599-.059.917zm15.998.056L23.528 21H9.472l.029-1.027c.184-6.618 3.736-8.977 7-8.977s6.816 2.358 7 8.977zM21.437 19c-.367-3.781-2.17-6.004-4.938-6.004s-4.57 2.223-4.938 6.004h9.875zm-4.938-9c-.799 0-1.527-.279-2.116-.73-.836-.64-1.384-1.638-1.384-2.77 0-1.93 1.567-3.5 3.5-3.5s3.5 1.57 3.5 3.5c0 1.132-.548 2.13-1.384 2.77-.589.451-1.317.73-2.116.73zm-1.5-3.5c0 .827.673 1.5 1.5 1.5s1.5-.673 1.5-1.5-.673-1.5-1.5-1.5-1.5.673-1.5 1.5zM7.5 3C9.433 3 11 4.57 11 6.5S9.433 10 7.5 10 4 8.43 4 6.5 5.567 3 7.5 3zm0 2C6.673 5 6 5.673 6 6.5S6.673 8 7.5 8 9 7.327 9 6.5 8.327 5 7.5 5z",
             "class_vb":"0 0 24 24",
             "css_class":"css007-smg"
         },
-        {
-            "active":false,
-            "fill":true,
-            "name":"Wallet",
-            "route":"/monietization",
-            "svg_path":"M18 8V7.2C18 6.0799 18 5.51984 17.782 5.09202C17.5903 4.71569 17.2843 4.40973 16.908 4.21799C16.4802 4 15.9201 4 14.8 4H6.2C5.07989 4 4.51984 4 4.09202 4.21799C3.71569 4.40973 3.40973 4.71569 3.21799 5.09202C3 5.51984 3 6.0799 3 7.2V8M21 12H19C17.8954 12 17 12.8954 17 14C17 15.1046 17.8954 16 19 16H21M3 8V16.8C3 17.9201 3 18.4802 3.21799 18.908C3.40973 19.2843 3.71569 19.5903 4.09202 19.782C4.51984 20 5.07989 20 6.2 20H17.8C18.9201 20 19.4802 20 19.908 19.782C20.2843 19.5903 20.5903 19.2843 20.782 18.908C21 18.4802 21 17.9201 21 16.8V11.2C21 10.0799 21 9.51984 20.782 9.09202C20.5903 8.71569 20.2843 8.40973 19.908 8.21799C19.4802 8 18.9201 8 17.8 8H3Z" ,
-            "class_vb":"0 0 24 24",
-            "css_class":"css007-swt"
-        },
+        // {
+        //     "active":false,
+        //     "fill":true,
+        //     "name":"Wallet",
+        //     "route":"/monietization",
+        //     "svg_path":"M18 8V7.2C18 6.0799 18 5.51984 17.782 5.09202C17.5903 4.71569 17.2843 4.40973 16.908 4.21799C16.4802 4 15.9201 4 14.8 4H6.2C5.07989 4 4.51984 4 4.09202 4.21799C3.71569 4.40973 3.40973 4.71569 3.21799 5.09202C3 5.51984 3 6.0799 3 7.2V8M21 12H19C17.8954 12 17 12.8954 17 14C17 15.1046 17.8954 16 19 16H21M3 8V16.8C3 17.9201 3 18.4802 3.21799 18.908C3.40973 19.2843 3.71569 19.5903 4.09202 19.782C4.51984 20 5.07989 20 6.2 20H17.8C18.9201 20 19.4802 20 19.908 19.782C20.2843 19.5903 20.5903 19.2843 20.782 18.908C21 18.4802 21 17.9201 21 16.8V11.2C21 10.0799 21 9.51984 20.782 9.09202C20.5903 8.71569 20.2843 8.40973 19.908 8.21799C19.4802 8 18.9201 8 17.8 8H3Z" ,
+        //     "class_vb":"0 0 24 24",
+        //     "css_class":"css007-swt"
+        // },
         {
             "active":false,
             "fill":true,
@@ -61,20 +64,29 @@ const Navigation_Menu = () => {
             "active":false,
             "fill":true,
             "name":"Profile",
-            "route":"/profile",
+            "route":`/${auth ? userAuth.user.username :""}`,
             "svg_path":"M10.561 8.073a6.005 6.005 0 0 1 3.432 5.142.75.75 0 1 1-1.498.07 4.5 4.5 0 0 0-8.99 0 .75.75 0 0 1-1.498-.07 6.004 6.004 0 0 1 3.431-5.142 3.999 3.999 0 1 1 5.123 0ZM10.5 5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0Z",
             "class_vb":"0 0 16 16",
             "css_class":"css007-spe"
         },
-        {
-            "active":false,
-            "fill":true,
-            "name":"bookmark",
-            "route":"/bookmarks",
-            "svg_path":"M665.6 768L512 614.4 358.4 768V256h307.2v512zM512 537.6L614.4 640V307.2H409.6V640L512 537.6z",
-            "class_vb":"0 0 1048 1048",
-            "css_class":"css007-bkm"
-       }
+        // {
+    //         "active":false,
+    //         "fill":true,
+    //         "name":"bookmark",
+    //         "route":"/bookmarks",
+    //         "svg_path":"M665.6 768L512 614.4 358.4 768V256h307.2v512zM512 537.6L614.4 640V307.2H409.6V640L512 537.6z",
+    //         "class_vb":"0 0 1048 1048",
+    //         "css_class":"css007-bkm"
+    //    },
+       {
+        "active":true,
+        "fill":true,
+        "name":"create",
+        "route":"/new-status",
+        "svg_path":"M24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z",
+        "class_vb":"0 0 32 32",
+        "css_class":"css007-bkm"
+   }
     ]
     return (
         <div className='navigation-menu'>
@@ -111,7 +123,7 @@ const Navigation_Menu = () => {
                             </div> 
                         ))}
                     </div>
-                    <div className='nav-links css0011-nav'>
+                    {/* <div className='nav-links css0011-nav'>
                         <div className={`nav_link css0003-fja`}>
                             <div className='links-svg'>
                                 <div className='css0006_svg css0008_wh100'>
@@ -128,7 +140,7 @@ const Navigation_Menu = () => {
                                 <p className='link-text'>Settings</p>
                             </div>
                         </div> 
-                    </div> 
+                    </div>  */}
                 </div>
             </div>
         </div>

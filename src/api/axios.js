@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import AuthContext from '../context/authProvider'
-const base_Url="https://tweatflash.onrender.com/api/v1"
+const base_Url="https://tweatflash-web-app.onrender.com/api/v1"
 
 let newRefresh=""
 let accessToken=""
@@ -40,7 +40,7 @@ export default axios.create({
     headers:{
         "Accept":'*/*',
         "Content-Type":'application/json',
-        "Origin":"https://tweatflash.onrender.com"
+        "Origin":"https://tweatflash-web-app.onrender.com"
     },
     
 })

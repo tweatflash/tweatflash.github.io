@@ -68,7 +68,7 @@ const Login = () => {
             
         }else{
           try {
-            const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
+            const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
                 method:"POST",
                 headers:{
                     'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const inputChange=()=>{
 const lets_go_login=async ()=>{
   showLoader()
   try {
-    const request= await fetch(`https://tweatflash.onrender.com/api/v1/auth/login/`,{
+    const request= await fetch(`https://tweatflash-web-app.onrender.com/api/v1/auth/login/`,{
       method:"POST",  
       headers: {
         'Content-Type': 'application/json',                                                                                                                                                                                                                       
@@ -188,7 +188,7 @@ const lets_go_login=async ()=>{
               
               <button className="btn-btn1 btn-blue" disabled={!validEmail} onClick={handleSubmit}type="submit">Next</button>
               
-          <Link to={"/"}>Don't have an account ?</Link>
+          <Link to={"/"} className="text-sm">Don't have an account ?</Link>
          </form> 
     </div>
     ) : (
@@ -217,9 +217,9 @@ const lets_go_login=async ()=>{
                   <img src={eyeopen} alt="eye"/>
                 </div>
               </div>
-             
+              
               <button className="btn-btn1 btn-blue" disabled={!password} onClick={lets_go_login}type="submit">Login</button>
-          <Link to={"/"}>Forgot password?</Link>
+          <Link to={"forgotpassword"} className="text-sm">Forgot password?</Link>
          </form>
     </div>
     )}

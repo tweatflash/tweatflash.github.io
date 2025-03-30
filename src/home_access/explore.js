@@ -16,7 +16,7 @@ const Explore = () => {
   const [userAuth,setUserAuth]=useState("")
   const mobile=width<=550
   const mobile2=width>=450
-  const {auth,setOtherProfile,displayBottomNav,cook,cookies2}=useContext(AuthContext)
+  const {auth,showBm ,setOtherProfile,displayBottomNav,cook,cookies2}=useContext(AuthContext)
   // console.log(data.user)
   const fetchPosts=async ()=>{
     try {
@@ -63,18 +63,12 @@ const Explore = () => {
                                 
                             </div>
                         </div>
-                        {!mobile? <div className='css0001_mre'>
-                            <div className='chck_sm'>
-                                
-                            </div>
-                        </div>:
-                        <></>
-                        }
+                       
                     </div>
                     </div>
                 </div>
                 
-                {mobile && displayBottomNav? <Botttom_nav/> : <></>}
+                {mobile && showBm? <Botttom_nav/> : <></>}
             </div>
         </div>
     </>

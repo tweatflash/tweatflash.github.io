@@ -12,7 +12,7 @@ const Welcome = () => {
     const {width}=useWindowSize()
     const navigator =useNavigate()
     return !auth && !loading?<> 
-      <header>
+      <header className='wlcm-header'>
             <div className="a">
                 <div className="logo">
                     <div className="a1 lgo-a1"></div>
@@ -39,18 +39,18 @@ const Welcome = () => {
             <h1><b  className= "grad">
                 tweatFlash</b> Where your thoughts take flight
                 </h1>
-            <p className="p in-para">From breaking news and entertainment to sports and politics, get the full story with all the live commentary</p>
+            <p className="p in-para p-g-bold">From breaking news and entertainment to sports and politics, get the full story with all the live commentary</p>
             <div className="get-started-modal" onClick={()=>document.querySelector(".login").classList.add("preview")}>
                 Get Started. it's Free
             </div>
-            <p>Free forever no credit card</p>
+            <p className='p-g-bold'>Free forever no credit card</p>
            
         </div>
         <div className={`login ${signupModal ? "preview" :"" } `}>
             <div className={`response_message ${err ? "load" :""}`}>
                 <div className="response-handler">
                     <div className="response-text custom-fja">
-                        <p className="response-message-text">
+                        <p className="response-message-text p-g-bold">
                             {prawler}
                         </p>
                     </div>

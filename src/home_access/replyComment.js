@@ -4,11 +4,13 @@ import { Blur, Grow, Slide } from 'transitions-kit'
 import profileImg from '../assets/images/svg/profile.svg'
 import AuthContext from '../context/authProvider'
 import axios from '../api/axios'
+import AsyncImg from './asyncImage'
 const formData = new FormData();
-const ReplyCommments = ({item,postId}) => {
+
+const   ReplyCommments = ({item,postId}) => {
     const [replies,setReplies] =useState([])
     const [reply,setReply]= useState(false)
-    const {userAuth,auth,cook,cookies2} =useContext(AuthContext)
+    const {userAuth,auth,cook,cookies2,setBooleanErrHome,setHomeErr} =useContext(AuthContext)
     const repliesTextRef=useRef(null)
     const [selectedFiles,setSelectedFiles] =useState([])
     const [commentsText,setCommentsText] =useState("")
@@ -29,6 +31,7 @@ const ReplyCommments = ({item,postId}) => {
             formData.append("text",commentsText) 
         }
         formData.append('signedCookies', JSON.stringify(signedCookies))
+        formData.append('commentId', item._id)
         if (selectedFiles.length){
             selectedFiles.forEach((file) => {
                 file.type.startsWith('image/')? formData.append('image', file) : formData.append('video', file) ;
@@ -38,6 +41,12 @@ const ReplyCommments = ({item,postId}) => {
             const request =axios.post(`/posts/commentOrReply/${postId}?replyTo=${item._id}`,formData,{ headers: { 'Content-Type': 'multipart/form-data' } })
             const response=await request
             console.log(response)
+            setBooleanErrHome(true)
+            setHomeErr(`Reply sent succesfully`)
+            if (response.status===200){
+                item.replies.push(response.data)
+            }
+                
         } catch (error) {
             console.log(error)
         }
@@ -46,18 +55,12 @@ const ReplyCommments = ({item,postId}) => {
     <li>
         <div class="comment">
             <div class="profile cm-img-hnd">
-            {item.user.profileImage ? <AsyncImage
-
-                src={item.user.profileImage}
-                Transition={Blur}
-                style={{ width: "100%", height: "100%", borderRadius: 50 }}
-                loader={<div style={{ background: '#888' }} />}
-            /> : <img src={profileImg}/>}
+            {item.user.profileImage ? <AsyncImg srcImg={item.user.profileImage}/> : <img src={profileImg}/>}
             </div>
             <div class="main-comments-user-d">
                 <div class="comment-text">          
                     <span>{item.user.name}</span>
-                    <p>
+                    <p className='p-g-bold'>
                         {item.text}
                     </p>
                     {
@@ -76,7 +79,7 @@ const ReplyCommments = ({item,postId}) => {
                             <p onClick={()=>setReply(!reply)}>Reply</p>
                         </div>
                         <div class="cmt-opts">
-                        <svg className='z-ndx' style={{width:"25px",height:"25px"}} viewBox="0 0 24 24" fill='#f4144c'  xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+                        {/* <svg className='z-ndx' style={{width:"25px",height:"25px"}} viewBox="0 0 24 24" fill='#f4144c'  xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg> */}
                         </div>
                     </div>
                     {
@@ -143,37 +146,54 @@ const ReplyCommments = ({item,postId}) => {
                         </div> :<></>
                     }
                 </div>
-                {/* <div class="cmt-reply-container">
-                    <div class="reply-wrp">
-                        <div class="rpy-header">
-                            <div class="rpy-photo"></div>
-                            <div class="rply-phld">
-                                <span class="rply-nm">
-                                    Paul Hanson
-                                </span>
-                                <div class="rply-body">
-                                    <div class="rply-text">
-                                        <span class="rply-snap-txt">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit
+                {
+                    item.replies.length ? item.replies.map(replyItem =>(
+                        <div class="cmt-reply-container">
+                            <div class="reply-wrp">
+                                <div class="rpy-header">
+                                    <div class="rpy-photo">
+                                        <AsyncImg srcImg={replyItem.user.profileImage}/>
+                                    </div>
+                                    <div class="rply-phld">
+                                        <span class="rply-nm">
+                                           {replyItem.user.name}
                                         </span>
+                                        <div class="rply-body">
+                                            <div class="rply-text">
+                                                <span class="rply-snap-txt">
+                                                    {replyItem.text}
+                                                </span>
+                                            </div>
+                                            {
+                                                replyItem.img.length?<div class="img-cmt-hldr">
+                                                <div class="cmt-img">
+                                                    <img src={replyItem.img[0]} alt="" srcset=""/>
+                                                </div>
+                                                 </div>:<></>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mr-usr-cmt-options">
+                                    <div class="us-cmt-opt">
+                                        <div class="cmt-opts">
+                                            <p>8h</p>
+                                            <p>1k Likes</p>
+                                            <p>Reply</p>
+                                        </div>
+                                        <div class="cmt-opts">
+                                            <p>❤</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mr-usr-cmt-options">
-                            <div class="us-cmt-opt">
-                                <div class="cmt-opts">
-                                    <p>8h</p>
-                                    <p>1k Likes</p>
-                                    <p>Reply</p>
-                                </div>
-                                <div class="cmt-opts">
-                                    <p>❤</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>  */}
+                    )) 
+                      :<></>
+                }
+
+
+                
                 {/* <span class="more-replies">
                     <a href="">View 2 more repllies</a>
                 </span> */}

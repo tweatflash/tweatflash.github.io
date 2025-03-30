@@ -61,7 +61,7 @@ const Register = () => {
     },[])
     const checkValidAuth= async ()=>{
         try { 
-            const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
+            const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
                 method:"POST",
                 headers:{
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const Register = () => {
     const submit_code = async ()=>{
        if (!mve){
             try {
-                const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
+                const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
                     method:"POST",
                     headers:{
                         'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const Register = () => {
             }
        }else{
             try {
-                const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
+                const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/emailAndphoneNumberAuth",{
                     method:"POST",
                     headers:{
                         'Content-Type': 'application/json',
@@ -275,7 +275,7 @@ const Register = () => {
                                 </>
                             </div>
                             <button className="btn-btn1 btn-blue" disabled={ (validName && validEmail) || (validName && phone && countryCode) || (validName && validEmail && phone && countryCode)?  false : true} onClick={handleSubmit} type="submit">Next</button>
-                            <Link to={"/login"}>Already have an account ?</Link>
+                            <Link to={"/login"} className="text-sm">Already have an account ?</Link>
                         </form>
                     </div>
                 </>

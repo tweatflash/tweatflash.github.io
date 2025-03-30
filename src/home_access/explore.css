@@ -105,35 +105,8 @@
     width: 100%;
     padding: 15px;
 }
-.ex-users{
-    width: 100%;
-    height: auto;
-    /* background-color: var(--post-color2); */
-    padding: 10px 0px;
-    display: flex;
-    justify-content: space-between;
-}
-.ex-usr-phto{
-    width: 45px;
-    height: 45px;
 
-}
-.ex-user-mre-data{
-    width: calc(100% - 55px);
-    /* height: 100px; */
-    /* background-color: green; */
-    display: flex;
-    justify-content: space-between;
-}
-.ex-user-mre-data button{
-    height: 30px;
-    padding: 0px 20px;
-    background-color: #4070f4;
-    color: #fff;
-    border:none;
-    border-radius: 20px;
-    outline: none;
-}
+
 .list-title{
     font-size: 17px;
 }

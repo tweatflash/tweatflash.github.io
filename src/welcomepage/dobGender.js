@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { Outlet } from 'react-router-dom'
 const DobGender = () => {
   return (
-    <div>DobGender</div>
+    <Outlet/>
   )
 }
 

@@ -4,10 +4,21 @@ import './wallet.css'
 const Monietization = () => {
   const {auth,cook,cookies2 , imgUrl,setImgUrl,userAuth} =useContext(AuthContext)
   useEffect(()=>{
-    console.log(userAuth)
+    // console.log(userAuth)
   },[])
   return (
     <div className='wallet-page'>
+        <div className='general-header'>
+            <div className='arrow-back'>
+              <div className='arw-bck-profile custm-fja'>
+                <svg viewBox="0 0 24 24" fill="none"   ><g  strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g> <path d="M11 6L5 12M5 12L11 18M5 12H19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+              </div>
+            </div>
+            <div className='mre-edata-con'>
+              <p>Wallet</p>
+              
+            </div>
+          </div>
       <div className='wallet-holder'>
             <div className='w-wb'>
                 <p className='wb-text'>Total Balance</p>

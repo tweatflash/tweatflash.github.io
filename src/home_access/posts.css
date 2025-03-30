@@ -17,14 +17,15 @@
     position: relative;
 }
 .post-list{
-    max-width: 420px;
+    max-width: 520px;
     width: 100%;
-    padding: 0px 5px;
+    padding: 0px 0px;
 
 }
 .posts-order-wrapper{
     width: 100%;
     height: auto;
+    
 }
 .posts-order-wrapper .posts{
     width: 100%;
@@ -48,7 +49,7 @@ body.light .posts{
 .post-contain{
     width: 100%;
     height: auto;
-    padding: 15px 15px 10px 15px;
+    padding: 15px 20px 10px 20px;
     padding: 0px;
 }
 .post-wrap{
@@ -82,7 +83,7 @@ body.light .posts{
     font-weight: 500;
 }
 .post-body{
-    padding: 5px 15px 5px 15px;
+    padding: 5px 15px 5px 65px;
 }
 .nu-content .userName span{
     border-radius: 4px;
@@ -98,9 +99,12 @@ body.light .posts{
     justify-content: center;
     align-items: center;
     color: var(--span2);
-    font-weight: 400;
+    font-weight: 300;
     padding-left: 0px;
     /* font-family: "Sniglet", serif; */
+}
+body.light .nu-content .userName span{
+    font-weight: 400;
 }
 .nu-content .profile-details{
     text-align: left;
@@ -115,11 +119,12 @@ body.light .posts{
     border-radius: 17px;
     /* border: .1px solid var(--border-color2); */
     background-color: var(--post-color2);
-    box-shadow:0 0 0  .5px inset var(--border-color2);
+    
 }
 .post-content{
     margin-top: 10px;
     font-size: medium;
+    padding: 0px 10px;
 }
 
 body.light .psts_text{
@@ -135,20 +140,26 @@ body.light .psts_text{
     max-height: 430px;
     border-radius: 15px;
     padding: 0px ;
+    position: relative;
     background-color: var(--post-color2);
-    border:.5px solid var(--border-color2);
+    /* border:.5px solid var(--border-color2); */
+    box-shadow:0 0 0  .5px  var(--border-color2);
 }
 .post-name{
-    font-size: 15px;
-    font-weight: 600 ;
+    font-size: 14px;
+    font-weight: 400 ;
     display: flex;
     /* justify-content: center; */
     position: relative;
     align-items: center;
 }
+body.light .post-name{
+    font-weight: 500;
+}
 .posts-img img{
     max-width: 100%;
     width: 100%;
+    min-width: 240px;
     height: 100%;
     max-height: 430px;
     border-radius: inherit;
@@ -156,6 +167,9 @@ body.light .psts_text{
     /* border: 1px solid var(--border-color2); */
     margin: auto;
     transition: .3s;
+    object-fit: cover;  
+    object-fit: cover;
+      object-position: center;
 }
 .nnnn-image{
     object-fit: cover;  
@@ -189,13 +203,14 @@ body.light .psts_text{
     align-items: center;
 }
 .posts-text-content{
-    padding: 0px 0px 10px 5px;
+    padding: 0px 0px 10px 0px;
 }
 .post-main-text{
     /* border: .1px solid var(--border-color2); */
     border-radius:  15px 15px;
     /* background-color: var(--post-color2); */
     padding: 10px;
+    padding-left: 0px;
     font-weight: 200;
     font-size: 15px;
 
@@ -210,7 +225,7 @@ body.light .psts_text{
     width: 100%;
     margin-top: 0px;
     padding-bottom: 5px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .reaction-posts{
     height: 38px;
@@ -272,7 +287,7 @@ body.light .psts_text{
     border-radius: 20px;
 }
 .svg-wrpr span{
-    font-size: 12px;
+    font-size: 13px;
     display: flex;
     height: 100%;
     color: var(--svg-color);
@@ -457,10 +472,18 @@ svg.fill{
 .btm-nav-cvr{
     /* border: 1px solid var(--border-color2); */
     padding-top: 10px   ;
+
+}
+.btm-nav-cvr::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    /* box-shadow:0 0 0  .3px inset var(--border-color2); */
 }
 .comments-container{
     width: 100%;
-    padding: 10px;
+    padding: 0px;
     /* padding-bottom: 70px; */
 
 }
@@ -526,7 +549,7 @@ svg.fill{
     width: 100%;
 }
 .comment-content .post-name{
-    font-size: 14px;
+    font-size: 15px;
 }
 .snd-comment{
     position: absolute;
@@ -644,9 +667,16 @@ svg.fill{
     width: 25px;
 }
 .pr{
-    position: relative;
-    /* width: 100%; */
-    /* height: 100%; */
+    position: fixed;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 130;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    background-color: rgba(0,0,0,.8);
 }
 .mpo-cnt-hld{
     position: fixed;
@@ -672,18 +702,18 @@ svg.fill{
     /* position: relative; */
     text-decoration: none;
     z-index: 0;
-    background-color: transparent   ;
-    z-index: 10;
+    /* background-color: transparent   ; */
+    /* z-index: 130; */
 }
 .more-psts-option{
     width: 240px;
     height: auto;
-    position: absolute;
+    /* position: absolute; */
     background-color: var(--main-color2);
     border: .5px solid var(--border-color2);
     border-radius: 15px ;
-    right: 10px;
-    top: 50px;
+    /* right: 10px; */
+    /* top: 50px; */
     z-index: 13;
     
     /* display: none; */
@@ -749,7 +779,7 @@ svg.fill{
     top: 0px;
     opacity: 0;
 }
-body:has(.comment-wrapper.active){
+body:has(.comment-wrapper.active), body:has(.pr.pr2){
     overflow-y: hidden;
 
 }
@@ -837,6 +867,10 @@ body:has(.comment-wrapper.active){
     border-radius: 50%;
     background-color: #4070f4;
 }
+.posts-order-wrapper .comment{
+    padding: 0px;
+    /* padding-right: 0; */
+}
 @media screen and (max-width:450px) {
     .posts-order-wrapper .posts{
         /* border: .751px solid var(--border-color2); */
@@ -910,4 +944,25 @@ body:has(.comment-wrapper.active){
     background-color: var(--post-color2);
     box-shadow:0 0 0  .2px inset var(--border-color2);
     border-radius: 20px;
+}
+.blg-v-cnt{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-toggler{
+    max-width: 60px;
+    width: 100%;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,.6);
+    aspect-ratio: 1/1;
+}
+.video-toggler svg{
+    width: 40%;
+    aspect-ratio: 1/1;
 }

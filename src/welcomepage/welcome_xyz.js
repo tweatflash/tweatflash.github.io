@@ -64,7 +64,7 @@ const WelcomeXYZ = () => {
     }
     const checkgglacc=async ()=>{
       try {
-        const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/authGoogle",{
+        const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/authGoogle",{
           method:"POST",
           headers:{
               'Content-Type': 'application/json',
@@ -87,7 +87,13 @@ const WelcomeXYZ = () => {
           setTimeout(()=>{
             window.location.reload()
           },500)
-        }else{
+        }else if(request.status===401){
+          setPrawler("Sorry, you didn't use google to signup try login with your email and password ")
+          setErr(true)
+          hideLoader()
+          setGoogleLogin(false)
+        }
+        else {
           setGoogleLogin(true)
           hideLoader()
         }
@@ -101,7 +107,7 @@ const WelcomeXYZ = () => {
     const createGoogleAccount =async ()=>{
         showLoader()
         try {
-            const request = await fetch("https://tweatflash.onrender.com/api/v1/auth/google",{
+            const request = await fetch("https://tweatflash-web-app.onrender.com/api/v1/auth/google",{
                 method:"POST",
                 headers:{
                     'Content-Type': 'application/json',
@@ -177,7 +183,7 @@ const WelcomeXYZ = () => {
         {!googleLogin? 
             <div className="form-data">
                 <p className="intro-text pad-1 tx-center">Happening now</p>
-                <p className="light-text pad-1 text-md tx-center">We are excited to have you on board! <br/>Please choose either to <Link to="signup">sign up</Link> or <Link to="login">log in</Link>.</p>
+                <p className="light-text pad-1 text-md tx-center p-g-bold">We are excited to have you on board! <br/>Please choose either to <Link to="signup">sign up</Link> or <Link to="login">log in</Link>.</p>
                 <div className="options">
                     <button className="btn-btn1 btn-btn2 btn-dark-ripple" onClick={login}> <img src={googleSvg}/> &nbsp;&nbsp;Continue with Google </button>
                     
@@ -194,7 +200,7 @@ const WelcomeXYZ = () => {
         :
         <>
         <p className="intro-text pad-1 route_header tx-center">Almost done</p>
-        <p className="light-text pad-1 text-md route_body tx-center">Enter and select your date of birth and gender so we can verify your registration process
+        <p className="light-text pad-1 text-md route_body tx-center p-g-bold">Enter and select your date of birth and gender so we can verify your registration process
         </p>
         <form onSubmit={(e)=>e.preventDefault()}>
             <p className="light-text text-md txt-white">Date of birth</p>
